@@ -1,0 +1,29 @@
+.news_block .news_description,.news_block .news_title a {
+    -webkit-line-clamp: 3!important
+}
+
+.option_type {
+    margin-right: 10px
+}
+
+.publication_details .details_table td:first-child {
+    white-space: nowrap
+}
+
+.page_container .news_block .news_date span:not(:last-child) {
+    margin-right: 30px!important
+}
+
+@media screen and (min-width: 1200px) {
+    .inner_container {
+        margin-left:0!important
+    }
+}
+
+.inner_container .at-resp-share-element .at-share-btn.at-svc-print .at-icon-wrapper * {
+    visibility: visible!important
+}
+
+.inner_main p {
+    margin: 1em 0!important
+}
