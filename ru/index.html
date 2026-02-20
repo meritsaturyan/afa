@@ -3582,9 +3582,9 @@
                 <div class="lg_block">
                     <button class="drop_btn icon_down" id="lang_btn">ru</button>
                     <ul class="drop_block" aria-labelledby="dropdownLangSwitcher" id="lang_dropdown">
-                        <li><a href="../index.html" class="lang_link" data-lang="am">am</a></li>
-                        <li><a href="#" class="lang_link" data-lang="ru">ru</a></li>
-                        <li><a href="../en/index.html" class="lang_link" data-lang="en">en</a></li>
+                        <li><a href="../" class="lang_link" data-lang="am">AM</a></li>
+                        <li><a href="./" class="lang_link" data-lang="ru">RU</a></li>
+                        <li><a href="../en/" class="lang_link" data-lang="en">EN</a></li>
                     </ul>
                 </div>
                 <button class="menu_btn"><span></span></button>
@@ -11999,9 +11999,9 @@
             if (links.length >= 3 && btn) {
                 if (inRu) {
                     btn.textContent = 'ru';
-                    links[0].href = '../' + page;
-                    links[1].href = '#';
-                    links[2].href = '../en/' + page;
+                    links[0].href = '../';
+                    links[1].href = './';
+                    links[2].href = '../en/';
                 } else if (inEn) {
                     btn.textContent = 'en';
                     links[0].href = '../' + page;
