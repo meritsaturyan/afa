@@ -6100,13 +6100,17 @@
                                 if ($(e.target).closest('.submenu_list a').length > 0) {
                                     return;
                                 }
+                                // Не закрываем при клике на кнопку бургер-меню (обрабатывается отдельно)
+                                if ($(e.target).closest('.menu_btn').length > 0) {
+                                    return;
+                                }
                                 closeAllMenues(e);
                             }),
                             // Обеспечиваем, что ссылки в подменю работают правильно
                             $(".header .submenu_list a").click(function (e) {
                                 e.stopPropagation();
                             }),
-                            $(".menu_btn").click(mobMenuTrigger),
+                            // Кнопка бургер-меню обрабатывается в initMobileMenu (внизу страницы) для корректной работы на touch-устройствах
                             $(".header .menu_list .submenu_btn").hover(openSubWithHover, mouseLeaveItem),
                             $(".header .menu_list > li").hover((function () { }
                             ), closeSubWithHover),
@@ -13505,14 +13509,24 @@
     });
   })();
 
-  // Mobile menu toggle (burger)
+  // Mobile menu toggle (burger) — один обработчик, без двойного срабатывания на touch
   (function () {
-    var btn = document.querySelector('.header .menu_btn');
-    if (!btn) return;
-
-    btn.addEventListener('click', function () {
-      document.body.classList.toggle('menu_opened');
-    });
+    function initMobileMenu() {
+      var btn = document.querySelector('.header .menu_btn');
+      if (!btn) return;
+      function toggleMenu(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.body.classList.toggle('menu_opened');
+      }
+      if ('ontouchstart' in window) {
+        btn.addEventListener('touchend', toggleMenu, { passive: false });
+      } else {
+        btn.addEventListener('click', toggleMenu);
+      }
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
+    else initMobileMenu();
   })();
 </script>
 </body>
