@@ -15,7 +15,7 @@
     </script>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Направления деятельности – АФА</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -1492,7 +1492,11 @@
         .footer .contacts_list,
         .footer .submenu_list,
         .header .search_block input,
-        .header .second_menu,
+        .header .second_menu {
+            font-size: 165%;
+            line-height: 16px
+        }
+
         .public_block .public_options {
             font-size: 130%;
             line-height: 16px
@@ -1509,6 +1513,9 @@
         .public_block .public_date {
             font-size: 120%;
             line-height: 15px
+        }
+        .header .lg_block {
+            font-size: 100%
         }
 
         @media screen and (min-width: 1200px) {
@@ -1616,7 +1623,7 @@
             margin-left: -570px;
             position: absolute;
             right: 0;
-            top: 50px
+            top: 85px
         }
 
         .header_main {
@@ -1626,7 +1633,33 @@
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
-            height: 51px
+            min-height: 85px;
+            height: 85px
+        }
+
+        .header_main .search_block,
+        .header_main .second_menu,
+        .header_main .lg_block {
+            -ms-flex-item-align: end;
+            align-self: flex-end;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 50px;
+            min-height: 50px
+        }
+
+        .header_main .second_menu .menu_list {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
         }
 
         .header .main_logo {
@@ -1645,8 +1678,19 @@
 
         .header .main_logo img {
             display: block;
-            height: 100px;
+            height: 130px;
             width: auto
+        }
+
+        .header_org_name {
+            color: #6c757d;
+            font-size: 24px;
+            line-height: 1.4;
+            margin-left: 15px;
+            margin-right: auto;
+            padding-top: 22px;
+            -ms-flex-item-align: start;
+            align-self: flex-start
         }
 
         .header .lg_block {
@@ -1669,8 +1713,8 @@
             border: none;
             color: inherit;
             padding: 0;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 400;
             gap: 8px
         }
 
@@ -1718,7 +1762,9 @@
         .header .lg_block .drop_block a {
             color: inherit;
             display: block;
-            padding: 5px 10px
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: 400
         }
 
         .header .search_block {
@@ -1824,7 +1870,8 @@
         }
 
         .header .menu_inner>.menu_list>li>a {
-            font-family: montserrat-semibold, montserratarm-semibold;
+            font-family: montserrat-bold, montserratarm-bold;
+            font-weight: 700;
             line-height: 20px
         }
 
@@ -1997,7 +2044,8 @@
             }
 
             .header_main {
-                height: 60px
+                min-height: 80px;
+                height: 80px
             }
 
             .header_main .second_menu {
@@ -2050,12 +2098,12 @@
             }
 
             .header .main_logo {
-                height: 40px;
+                height: 55px;
                 overflow: hidden
             }
 
             .header .main_logo img {
-                height: 50px
+                height: 65px
             }
 
             .header .lg_block {
@@ -3772,7 +3820,1089 @@
             color: #FEFEFE !important;
             opacity: 0.9;
         }
-    </style>
+
+/* MOBILE fine-tune: title lower + banner closer */
+        @media screen and (max-width: 767px) {
+            .header_org_name {
+                font-size: 14px !important;
+                line-height: 1.15 !important;
+                transform: translateY(0) !important;
+                margin-top: 4px !important;
+                padding-top: 2px !important;
+                -webkit-line-clamp: unset !important;
+                display: block !important;
+                overflow: visible !important;
+                text-overflow: unset !important;
+            }
+
+            .content {
+                padding-top: 0 !important;
+            }
+
+            .main_slider {
+                margin-top: 0 !important;
+            }
+
+            /* Лупу чуть ниже */
+            .header_actions .search_block {
+                margin-top: 4px !important;
+            }
+        }
+
+        /* =========================
+           MENU DUPLICATES FIX
+           ========================= */
+
+        /* Desktop: mobile_only скрываем, second_menu показываем */
+        @media screen and (min-width: 960px) {
+            .mobile_only {
+                display: none !important;
+            }
+
+            /* Убрать жирность у second_menu на десктопе */
+            .second_menu .menu_list>li>a {
+                font-family: GAAGayane-Regular, montserrat, montserratarm;
+                font-weight: 400 !important;
+            }
+        }
+
+        /* Mobile: second_menu скрываем, mobile_only показываем */
+        @media screen and (max-width: 959px) {
+            .second_menu {
+                display: none !important;
+            }
+
+            .mobile_only {
+                display: block !important;
+            }
+
+            /* На мобилке пункты меню НЕ жирные */
+            .header .menu_block .menu_list>li>a {
+                font-family: GAAGayane-Regular, montserrat, montserratarm;
+                font-weight: 400 !important;
+            }
+        }
+
+/* ====== MOBILE HEADER (copy from index.html) ====== */
+@media screen and (max-width: 767px) {
+  .header {
+    background: #fff;
+    box-shadow: none;
+    padding-bottom: 8px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .header_main {
+    display: grid !important;
+    grid-template-columns: 80px 1fr 128px !important;
+    grid-template-areas: "logo title actions" !important;
+    align-items: center !important;
+    column-gap: 10px !important;
+    padding: 6px 0 !important;
+    min-height: 92px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo {
+    grid-area: logo !important;
+    background: #fff !important;
+    margin: 0 !important;
+    padding-right: 6px !important;
+    align-self: center !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo img {
+    width: 74px !important;
+    height: 74px !important;
+    min-width: 74px !important;
+    min-height: 74px !important;
+    max-width: 74px !important;
+    max-height: 74px !important;
+    border-radius: 50% !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  .header_org_name {
+    grid-area: title !important;
+    justify-self: center !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+    font-weight: 600 !important;
+    color: #212529 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: 4px !important;
+    padding-top: 2px !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    transform: translateY(0) !important;
+  }
+
+  .header_actions {
+    grid-area: actions !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    min-width: 128px !important;
+    max-width: 128px !important;
+  }
+
+  .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
+  .header_actions .lg_block { order: 2 !important; }
+  .header_actions .menu_btn { order: 3 !important; }
+
+  .header .search_block form {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .header .search_block button[type=submit] {
+    position: static !important;
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .lg_block { margin-left: 0 !important; height: auto !important; }
+  .header .lg_block .drop_btn {
+    height: 44px !important;
+    padding: 0 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+
+  .header .menu_btn {
+    width: 44px !important;
+    height: 44px !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .menu_btn:before,
+  .header .menu_btn:after,
+  .header .menu_btn span {
+    content: "" !important;
+    position: absolute !important;
+    left: 11px !important;
+    right: 11px !important;
+    height: 2px !important;
+    background: currentColor !important;
+    border: none !important;
+    width: auto !important;
+    transition: transform .25s ease, opacity .2s ease, top .25s ease !important;
+  }
+
+  .header .menu_btn:before { top: 14px !important; }
+  .header .menu_btn span { top: 21px !important; }
+  .header .menu_btn:after { top: 28px !important; }
+
+  body.menu_opened .header .menu_btn span { opacity: 0 !important; }
+  body.menu_opened .header .menu_btn:before { top: 21px !important; transform: rotate(45deg) !important; }
+  body.menu_opened .header .menu_btn:after { top: 21px !important; transform: rotate(-45deg) !important; }
+
+  .content { padding-top: 0 !important; }
+  .main_slider { margin-top: 0 !important; }
+}
+
+/* MENU DUPLICATES FIX */
+@media screen and (min-width: 960px) {
+  .mobile_only { display: none !important; }
+  .second_menu .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+@media screen and (max-width: 959px) {
+  .second_menu { display: none !important; }
+  .mobile_only { display: block !important; }
+  .header .menu_block .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+
+/* ====== MOBILE HEADER (copy from index.html) ====== */
+@media screen and (max-width: 767px) {
+  .header {
+    background: #fff;
+    box-shadow: none;
+    padding-bottom: 8px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .header_main {
+    display: grid !important;
+    grid-template-columns: 80px 1fr 128px !important;
+    grid-template-areas: "logo title actions" !important;
+    align-items: center !important;
+    column-gap: 10px !important;
+    padding: 6px 0 !important;
+    min-height: 92px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo {
+    grid-area: logo !important;
+    background: #fff !important;
+    margin: 0 !important;
+    padding-right: 6px !important;
+    align-self: center !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo img {
+    width: 74px !important;
+    height: 74px !important;
+    min-width: 74px !important;
+    min-height: 74px !important;
+    max-width: 74px !important;
+    max-height: 74px !important;
+    border-radius: 50% !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  .header_org_name {
+    grid-area: title !important;
+    justify-self: center !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+    font-weight: 600 !important;
+    color: #212529 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: 4px !important;
+    padding-top: 2px !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    transform: translateY(0) !important;
+  }
+
+  .header_actions {
+    grid-area: actions !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    min-width: 128px !important;
+    max-width: 128px !important;
+  }
+
+  .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
+  .header_actions .lg_block { order: 2 !important; }
+  .header_actions .menu_btn { order: 3 !important; }
+
+  .header .search_block form {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .header .search_block button[type=submit] {
+    position: static !important;
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .lg_block { margin-left: 0 !important; height: auto !important; }
+  .header .lg_block .drop_btn {
+    height: 44px !important;
+    padding: 0 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+
+  .header .menu_btn {
+    width: 44px !important;
+    height: 44px !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .menu_btn:before,
+  .header .menu_btn:after,
+  .header .menu_btn span {
+    content: "" !important;
+    position: absolute !important;
+    left: 11px !important;
+    right: 11px !important;
+    height: 2px !important;
+    background: currentColor !important;
+    border: none !important;
+    width: auto !important;
+    transition: transform .25s ease, opacity .2s ease, top .25s ease !important;
+  }
+
+  .header .menu_btn:before { top: 14px !important; }
+  .header .menu_btn span { top: 21px !important; }
+  .header .menu_btn:after { top: 28px !important; }
+
+  body.menu_opened .header .menu_btn span { opacity: 0 !important; }
+  body.menu_opened .header .menu_btn:before { top: 21px !important; transform: rotate(45deg) !important; }
+  body.menu_opened .header .menu_btn:after { top: 21px !important; transform: rotate(-45deg) !important; }
+
+  .content { padding-top: 0 !important; }
+  .main_slider { margin-top: 0 !important; }
+}
+
+/* MENU DUPLICATES FIX */
+@media screen and (min-width: 960px) {
+  .mobile_only { display: none !important; }
+  .second_menu .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+@media screen and (max-width: 959px) {
+  .second_menu { display: none !important; }
+  .mobile_only { display: block !important; }
+  .header .menu_block .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+
+/* ====== MOBILE HEADER (copy from index.html) ====== */
+@media screen and (max-width: 767px) {
+  .header {
+    background: #fff;
+    box-shadow: none;
+    padding-bottom: 8px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .header_main {
+    display: grid !important;
+    grid-template-columns: 80px 1fr 128px !important;
+    grid-template-areas: "logo title actions" !important;
+    align-items: center !important;
+    column-gap: 10px !important;
+    padding: 6px 0 !important;
+    min-height: 92px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo {
+    grid-area: logo !important;
+    background: #fff !important;
+    margin: 0 !important;
+    padding-right: 6px !important;
+    align-self: center !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo img {
+    width: 74px !important;
+    height: 74px !important;
+    min-width: 74px !important;
+    min-height: 74px !important;
+    max-width: 74px !important;
+    max-height: 74px !important;
+    border-radius: 50% !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  .header_org_name {
+    grid-area: title !important;
+    justify-self: center !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+    font-weight: 600 !important;
+    color: #212529 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: 4px !important;
+    padding-top: 2px !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    transform: translateY(0) !important;
+  }
+
+  .header_actions {
+    grid-area: actions !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    min-width: 128px !important;
+    max-width: 128px !important;
+  }
+
+  .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
+  .header_actions .lg_block { order: 2 !important; }
+  .header_actions .menu_btn { order: 3 !important; }
+
+  .header .search_block form {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .header .search_block button[type=submit] {
+    position: static !important;
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .lg_block { margin-left: 0 !important; height: auto !important; }
+  .header .lg_block .drop_btn {
+    height: 44px !important;
+    padding: 0 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+
+  .header .menu_btn {
+    width: 44px !important;
+    height: 44px !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .menu_btn:before,
+  .header .menu_btn:after,
+  .header .menu_btn span {
+    content: "" !important;
+    position: absolute !important;
+    left: 11px !important;
+    right: 11px !important;
+    height: 2px !important;
+    background: currentColor !important;
+    border: none !important;
+    width: auto !important;
+    transition: transform .25s ease, opacity .2s ease, top .25s ease !important;
+  }
+
+  .header .menu_btn:before { top: 14px !important; }
+  .header .menu_btn span { top: 21px !important; }
+  .header .menu_btn:after { top: 28px !important; }
+
+  body.menu_opened .header .menu_btn span { opacity: 0 !important; }
+  body.menu_opened .header .menu_btn:before { top: 21px !important; transform: rotate(45deg) !important; }
+  body.menu_opened .header .menu_btn:after { top: 21px !important; transform: rotate(-45deg) !important; }
+
+  .content { padding-top: 0 !important; }
+  .main_slider { margin-top: 0 !important; }
+}
+
+/* MENU DUPLICATES FIX */
+@media screen and (min-width: 960px) {
+  .mobile_only { display: none !important; }
+  .second_menu .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+@media screen and (max-width: 959px) {
+  .second_menu { display: none !important; }
+  .mobile_only { display: block !important; }
+  .header .menu_block .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+
+/* ====== MOBILE HEADER (copy from index.html) ====== */
+@media screen and (max-width: 767px) {
+  .header {
+    background: #fff;
+    box-shadow: none;
+    padding-bottom: 8px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .header_main {
+    display: grid !important;
+    grid-template-columns: 80px 1fr 128px !important;
+    grid-template-areas: "logo title actions" !important;
+    align-items: center !important;
+    column-gap: 10px !important;
+    padding: 6px 0 !important;
+    min-height: 92px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo {
+    grid-area: logo !important;
+    background: #fff !important;
+    margin: 0 !important;
+    padding-right: 6px !important;
+    align-self: center !important;
+    overflow: visible !important;
+  }
+
+  .header .main_logo img {
+    width: 74px !important;
+    height: 74px !important;
+    min-width: 74px !important;
+    min-height: 74px !important;
+    max-width: 74px !important;
+    max-height: 74px !important;
+    border-radius: 50% !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  .header_org_name {
+    grid-area: title !important;
+    justify-self: center !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+    font-weight: 600 !important;
+    color: #212529 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: 4px !important;
+    padding-top: 2px !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    transform: translateY(0) !important;
+  }
+
+  .header_actions {
+    grid-area: actions !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    min-width: 128px !important;
+    max-width: 128px !important;
+  }
+
+  .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
+  .header_actions .lg_block { order: 2 !important; }
+  .header_actions .menu_btn { order: 3 !important; }
+
+  .header .search_block form {
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .header .search_block button[type=submit] {
+    position: static !important;
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .lg_block { margin-left: 0 !important; height: auto !important; }
+  .header .lg_block .drop_btn {
+    height: 44px !important;
+    padding: 0 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+
+  .header .menu_btn {
+    width: 44px !important;
+    height: 44px !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header .menu_btn:before,
+  .header .menu_btn:after,
+  .header .menu_btn span {
+    content: "" !important;
+    position: absolute !important;
+    left: 11px !important;
+    right: 11px !important;
+    height: 2px !important;
+    background: currentColor !important;
+    border: none !important;
+    width: auto !important;
+    transition: transform .25s ease, opacity .2s ease, top .25s ease !important;
+  }
+
+  .header .menu_btn:before { top: 14px !important; }
+  .header .menu_btn span { top: 21px !important; }
+  .header .menu_btn:after { top: 28px !important; }
+
+  body.menu_opened .header .menu_btn span { opacity: 0 !important; }
+  body.menu_opened .header .menu_btn:before { top: 21px !important; transform: rotate(45deg) !important; }
+  body.menu_opened .header .menu_btn:after { top: 21px !important; transform: rotate(-45deg) !important; }
+
+  .content { padding-top: 0 !important; }
+  .main_slider { margin-top: 0 !important; }
+}
+
+/* MENU DUPLICATES FIX */
+@media screen and (min-width: 960px) {
+  .mobile_only { display: none !important; }
+  .second_menu .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+@media screen and (max-width: 959px) {
+  .second_menu { display: none !important; }
+  .mobile_only { display: block !important; }
+  .header .menu_block .menu_list>li>a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm;
+    font-weight: 400 !important;
+  }
+}
+
+.header .menu_list > li > a[href*="mermasin"],
+.header .menu_list > li > a[href*="andamakcutyan_hayt"],
+.header .menu_list > li > a[href*="hetadardk_kap"],
+.header .menu_list > li > a[href*="gorcuneutyun"],
+.header .menu_list > li > a[href*="inchuandamakcel"],
+.header .menu_list > li > a[href*="andamner"],
+.header .menu_list > li > a[href*="norutyunner"],
+.header .menu_list > li > a[href*="mijotsaranner"] {
+  font-size: 118% !important;
+  line-height: 1.25 !important;
+}
+
+@media screen and (max-width: 959px) {
+  .header .menu_list > li > a[href*="mermasin"],
+  .header .menu_list > li > a[href*="andamakcutyan_hayt"],
+  .header .menu_list > li > a[href*="hetadardk_kap"],
+  .header .menu_list > li > a[href*="gorcuneutyun"],
+  .header .menu_list > li > a[href*="inchuandamakcel"],
+  .header .menu_list > li > a[href*="andamner"],
+  .header .menu_list > li > a[href*="norutyunner"],
+  .header .menu_list > li > a[href*="mijotsaranner"] {
+    font-size: 125% !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* ===== Bigger font for 5 main menu items (am/ru/en) ===== */
+.header .menu_list > li > a[href*="gorcuneutyun"],
+.header .menu_list > li > a[href*="inchuandamakcel"],
+.header .menu_list > li > a[href*="andamner"],
+.header .menu_list > li > a[href*="norutyunner"],
+.header .menu_list > li > a[href*="mijotsaranner"]{
+  font-size: 120% !important;
+  line-height: 1.25 !important;
+}
+
+@media screen and (max-width: 959px) {
+  .header .menu_list > li > a[href*="gorcuneutyun"],
+  .header .menu_list > li > a[href*="inchuandamakcel"],
+  .header .menu_list > li > a[href*="andamner"],
+  .header .menu_list > li > a[href*="norutyunner"],
+  .header .menu_list > li > a[href*="mijotsaranner"]{
+    font-size: 130% !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* ===== Bigger font for 5 main menu items (am/ru/en) ===== */
+.header .menu_list > li > a[href*="gorcuneutyun"],
+.header .menu_list > li > a[href*="inchuandamakcel"],
+.header .menu_list > li > a[href*="andamner"],
+.header .menu_list > li > a[href*="norutyunner"],
+.header .menu_list > li > a[href*="mijotsaranner"]{
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+}
+
+@media screen and (max-width: 959px) {
+  .header .menu_list > li > a[href*="gorcuneutyun"],
+  .header .menu_list > li > a[href*="inchuandamakcel"],
+  .header .menu_list > li > a[href*="andamner"],
+  .header .menu_list > li > a[href*="norutyunner"],
+  .header .menu_list > li > a[href*="mijotsaranner"]{
+    font-size: 19px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* =========================
+   DESKTOP HEADER: вернуть старую раскладку (search + lang + burger сверху)
+   и top links (About/Apply/Contacts) сверху справа
+   ========================= */
+@media screen and (min-width: 960px) {
+  /* header_main как 3 колонки: logo | title | right */
+  .header_main {
+    display: grid !important;
+    grid-template-columns: 140px 1fr auto !important;
+    grid-template-areas: "logo title right" !important;
+    align-items: center !important;
+    height: 85px !important;
+    min-height: 85px !important;
+  }
+
+  .header .main_logo {
+    grid-area: logo !important;
+    align-self: center !important;
+    margin: 0 !important;
+    padding-right: 10px !important;
+  }
+
+  .header_org_name {
+    grid-area: title !important;
+    align-self: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* right column: top links + actions */
+  .header_actions {
+    grid-area: right !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 14px !important;
+  }
+
+  /* вернуть second_menu наверх (Мер о нас/заявка/контакты) */
+  .header_main .second_menu {
+    display: flex !important;
+    align-items: center !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .header_main .second_menu .menu_list {
+    display: flex !important;
+    align-items: center !important;
+    gap: 26px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header_main .second_menu .menu_list > li {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .header_main .second_menu .menu_list > li > a {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  /* actions справа: 🔍 + lang + burger */
+  .header_main .search_block,
+  .header_main .lg_block,
+  .header_main .menu_btn {
+    align-self: center !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  .header .search_block {
+    width: auto !important;
+  }
+
+  .header .search_block form {
+    height: 44px !important;
+  }
+
+  .header .search_block button[type=submit] {
+    margin-top: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* бургер на desktop можно оставить (если ты хочешь) */
+  .header .menu_btn {
+    display: inline-flex !important;
+    width: 44px !important;
+    height: 44px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* FIX: квадрат справа — это .menu_btn. На desktop прячем. */
+@media screen and (min-width: 960px) {
+  .header .menu_btn {
+    display: none !important;
+  }
+}
+
+/* На всякий случай: убрать квадратный вид даже если где-то покажется */
+.header .menu_btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* =========================
+   HEADER UNIFY + FONT BOOST
+   ========================= */
+
+/* 1) Desktop: hide burger (removes weird square) */
+@media screen and (min-width: 960px) {
+  .header .menu_btn {
+    display: none !important;
+  }
+}
+
+/* 2) Desktop: make top row (second_menu) right-aligned and readable */
+@media screen and (min-width: 960px) {
+  .header_main {
+    align-items: flex-start !important;
+  }
+
+  .header .second_menu {
+    display: block !important;
+  }
+
+  /* Slightly bigger font for top row links */
+  .header .second_menu .menu_list > li > a {
+    font-size: 18px !important;
+    line-height: 22px !important;
+    font-weight: 500 !important;
+  }
+}
+
+/* 3) Desktop: slightly bigger main menu items (bold row) */
+@media screen and (min-width: 960px) {
+  .header .menu_inner > .menu_list > li > a {
+    font-size: 18px !important;
+    line-height: 22px !important;
+  }
+}
+
+/* 4) Mobile: slightly bigger menu items too */
+@media screen and (max-width: 959px) {
+  .header .menu_block .menu_list > li > a {
+    font-size: 18px !important;
+    line-height: 22px !important;
+  }
+}
+
+/* 5) Keep search + lang on the top row (desktop) */
+@media screen and (min-width: 960px) {
+  .header_main .search_block,
+  .header_main .lg_block {
+    align-self: flex-start !important;
+    margin-top: 10px !important;
+  }
+}
+
+/* 6) Ensure logo is clickable and doesn’t shift layout */
+.header .main_logo a {
+  display: block;
+}
+
+/* ===== FORCE second_menu to stay in top header row (desktop) ===== */
+@media screen and (min-width: 960px) {
+  .header_main {
+    display: flex !important;
+    align-items: center !important;
+    height: 85px !important;
+  }
+
+  /* название слева/по центру, а second_menu + actions справа */
+  .header_org_name {
+    margin-right: auto !important;
+  }
+
+  .second_menu {
+    display: flex !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    height: 50px !important;
+  }
+
+  .second_menu .menu_list {
+    display: flex !important;
+    align-items: center !important;
+    gap: 26px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .second_menu .menu_list > li {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .second_menu .menu_list > li > a {
+    font-family: GAAGayane-Regular, montserrat, montserratarm !important;
+    font-weight: 500 !important;
+    font-size: 16px !important; /* чуть больше */
+    line-height: 20px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* ===== REMOVE wrong mobile duplicates (only if they exist) ===== */
+@media screen and (max-width: 959px) {
+  .mobile_only {
+    display: none !important;
+  }
+}
+
+/* Лого и шапка на desktop — как в andamner.html */
+@media screen and (min-width: 960px) {
+  .header {
+    padding-top: 10px !important;
+  }
+  .header .main_logo img {
+    margin-top: 6px !important;
+  }
+  .header .main_logo {
+    padding-right: 2px !important;
+  }
+  .header_org_name {
+    margin-left: 4px !important;
+  }
+  .second_menu {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  .header_main .search_block,
+  .header_main .lg_block {
+    align-self: center !important;
+    margin-top: 8px !important;
+  }
+  .header_main .lg_block {
+    margin-top: 6px !important;
+  }
+}
+
+/* gorcuneutyun: надпись — стиль как в index */
+@media screen and (min-width: 960px) {
+  .header_org_name {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    color: #6c757d !important;
+    margin-left: 4px !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+    align-self: center !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+}
+.header_actions {
+  align-items: center !important;
+  overflow: visible !important;
+}
+.header_actions .search_block,
+.header_actions .lg_block {
+  align-self: center !important;
+}
+.header .search_block,
+.header .search_block form,
+.header .search_block button[type=submit] {
+  overflow: visible !important;
+}
+.header .search_block button[type=submit] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  visibility: visible !important;
+}
+.header_main {
+  overflow: visible !important;
+}
+
+</style>
 
 </head>
 
@@ -3780,133 +4910,79 @@
 
 
     <div class="header">
-        <div class="page_container">
-            <div class="header_main">
-                <div class="main_logo">
-                    <a href="index.html"> <img src="../public/logo.jpg" alt="АФА" title="АФА">
-                    </a>
-                </div>
-                <div class="search_block" data-type="close">
-                    <form method="GET" action="#">
-                        <input type="text" name="term" value="" autocomplete="off" placeholder="Поиск">
-                        <button type="submit" class="icon_search"></button>
-                    </form>
-                </div>
+  <div class="page_container">
+    <div class="header_main">
+      <div class="main_logo">
+        <a href="./index.html" aria-label="Home">
+          <img src="../public/logo.jpg" alt="АФА" title="АФА">
+        </a>
+      </div>
 
-                <div class="second_menu">
-                    <ul class="menu_list">
-                        <li>
-                            <a class="submenu_btn" href="mermasin.html">
-                                О нас
-                            </a>
-                            <ul class="submenu_list" style="display: none;">
-                                <li>
-                                    <a class="" href="mermasin.html">
-                                        Об АФА
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="gorcynkerner.html">
-                                        Партнёры
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="khorhurd.html">
-                                        Совет АФА
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="gorcakir.html">
-                                        Исполнительный орган АФА
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="ashxatatexer.html">
-                                        Вакансии
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="" href="andamakcutyan_hayt.html">
-                                Заявка на членство
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="hetadardk_kap.html">
-                                Обратная связь
-                            </a>
-                        </li>
-                    </ul>
+      <div class="header_org_name">Ассоциация финансистов Армении</div>
 
-                </div>
-                <div class="lg_block">
-                    <button class="drop_btn icon_down" id="lang_btn">ru</button>
-                    <ul class="drop_block" aria-labelledby="dropdownLangSwitcher" id="lang_dropdown">
-                        <li><a href="../gorcuneutyun.html" class="lang_link" data-lang="am">am</a></li>
-                    <li><a href="#" class="lang_link" data-lang="ru">ru</a></li>
-                    <li><a href="../en/gorcuneutyun.html" class="lang_link" data-lang="en">en</a></li>
-                    </ul>
-                </div>
-                <button class="menu_btn"><span></span></button>
-            </div>
-            <div class="menu_block">
-                <div class="menu_inner">
-                    <ul class="menu_list">
-                        <li>
-                            <a class="" href="gorcuneutyun.html">
-                                Деятельность
-                            </a>
-                        </li>
-                        <li>
-                            <a class="submenu_btn" href="inchuandamakcel.html">
-                                Вступить
-                            </a>
-                            <ul class="submenu_list" style="display: none;">
-                                <li>
-                                    <a class="" href="#">
-                                        Почему вступить
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        Услуги
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="" href="andamner.html">
-                                Члены
-                            </a>
-                        </li>
-                        <li>
-                            <a class="submenu_btn" href="norutyunner.html">
-                                Новости
-                            </a>
-                            <ul class="submenu_list" style="display: none;">
-                                <li>
-                                    <a class="" href="#">
-                                        Объявления
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="" href="#">
-                                        Интервью
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="" href="mijotsaranner.html">
-                                Мероприятия
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      <div class="second_menu">
+        <ul class="menu_list">
+          <li>
+            <a class="submenu_btn" href="mermasin.html">О нас</a>
+            <ul class="submenu_list">
+              <li><a href="mermasin.html">Об АФА</a></li>
+              <li><a href="gorcynkerner.html">Партнёры</a></li>
+              <li><a href="khorhurd.html">Совет АФА</a></li>
+              <li><a href="gorcakir.html">Исполнительный орган АФА</a></li>
+              <li><a href="ashxatatexer.html">Вакансии</a></li>
+            </ul>
+          </li>
+          <li><a href="andamakcutyan_hayt.html">Заявка на членство</a></li>
+          <li><a href="hetadardk_kap.html">Контакты</a></li>
+        </ul>
+      </div>
+
+      <div class="header_actions">
+        <div class="search_block" data-type="close">
+          <form method="GET" action="#">
+            <input type="text" name="term" value="" autocomplete="off" placeholder="Поиск">
+            <button type="submit" class="icon_search" aria-label="Search"></button>
+          </form>
         </div>
+
+        <div class="lg_block">
+          <button class="drop_btn icon_down" id="lang_btn" type="button">ru</button>
+          <ul class="drop_block" id="lang_dropdown">
+            <li><a href="#" class="lang_link" data-lang="am">am</a></li>
+            <li><a href="#" class="lang_link" data-lang="ru">ru</a></li>
+            <li><a href="#" class="lang_link" data-lang="en">en</a></li>
+          </ul>
+        </div>
+
+        <button class="menu_btn" type="button" aria-label="Menu"><span></span></button>
+      </div>
     </div>
+
+    <div class="menu_block">
+      <div class="menu_inner">
+        <ul class="menu_list">
+          <li><a href="gorcuneutyun.html">Деятельность</a></li>
+          <li>
+            <a class="submenu_btn" href="inchuandamakcel.html">Вступить</a>
+            <ul class="submenu_list">
+              <li><a href="inchuandamakcel.html">Почему вступить</a></li>
+              <li><a href="tsarayutyunner.html">Услуги</a></li>
+            </ul>
+          </li>
+          <li><a href="andamner.html">Члены</a></li>
+          <li>
+            <a class="submenu_btn" href="norutyunner.html">Новости</a>
+            <ul class="submenu_list">
+              <li><a href="gorcakir.html">Объявления</a></li>
+              <li><a href="tsarayutyunner.html">Интервью</a></li>
+            </ul>
+          </li>
+          <li><a href="mijotsaranner.html">Мероприятия</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -4284,72 +5360,43 @@
         )();
 
     </script>
-    <script>
-        (function() {
-            var path = window.location.pathname || '';
-            var parts = path.split('/').filter(Boolean);
-            var page = parts.pop() || 'index.html';
-            var inRu = parts.indexOf('ru') >= 0;
-            var inEn = parts.indexOf('en') >= 0;
-            var hasRu = page === 'index.html';
-            var hasEn = page === 'index.html';
-            var targetRu = hasRu ? 'ru/' + page : 'ru/index.html';
-            var targetEn = hasEn ? 'en/' + page : 'en/index.html';
-            var btn = document.getElementById('lang_btn');
-            var links = document.querySelectorAll('#lang_dropdown .lang_link');
-            if (links.length >= 3 && btn) {
-                if (inRu) {
-                    btn.textContent = 'ru';
-                    links[0].href = '../' + page;
-                    links[1].href = '#';
-                    links[2].href = hasEn ? '../en/' + page : '../en/index.html';
-                } else if (inEn) {
-                    btn.textContent = 'en';
-                    links[0].href = '../' + page;
-                    links[1].href = hasRu ? '../ru/' + page : '../ru/index.html';
-                    links[2].href = '#';
-                } else {
-                    btn.textContent = 'am';
-                    links[0].href = '#';
-                    links[1].href = targetRu;
-                    links[2].href = targetEn;
-                }
-            }
-        })();
-    </script>
+    
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+(function () {
+    var path = (window.location.pathname || '/').replace(/^\//, '').replace(/\/$/, '') || '';
+    var parts = path.split('/').filter(Boolean);
+    var currentLang, currentFile;
+    if (parts[0] === 'ru' || parts[0] === 'en') {
+        currentLang = parts[0];
+        currentFile = parts[1] || 'index.html';
+    } else {
+        currentLang = 'am';
+        currentFile = parts[0] || 'index.html';
+    }
+    var knownPages = ["index.html","andamakcutyan_hayt.html","andamner.html","ashxatatexer.html","gorcakir.html","gorcuneutyun.html","gorcynkerner.html","gorcynkerner_new.html","hetadardk_kap.html","inchuandamakcel.html","khorhurd.html","mermasin.html","mijotsaranner.html","norutyunner.html","tsarayutyunner.html"];
+    function getTargetUrl(targetLang) {
+        var file = knownPages.indexOf(currentFile) >= 0 ? currentFile : "index.html";
+        if (targetLang === "am") return "/" + file;
+        return "/" + targetLang + "/" + file;
+    }
+    var btn = document.getElementById('lang_btn');
+    var links = document.querySelectorAll('#lang_dropdown .lang_link');
+    if (!btn || !links.length) return;
+    btn.textContent = currentLang;
+    [].forEach.call(links, function (link) {
+        var lang = link.getAttribute('data-lang');
+        if (!lang) return;
+        link.setAttribute('href', getTargetUrl(lang));
+    });
+})();
+</script>
 
 
 
     <script>
-        (function() {
+        (function () {
             function initLangDropdown() {
                 var btn = document.getElementById('lang_btn');
                 var dropdown = document.getElementById('lang_dropdown');
@@ -4370,8 +5417,8 @@
                     else openDropdown();
                 }
                 btn.addEventListener('click', toggleDropdown);
-                dropdown.addEventListener('click', function(e) { e.stopPropagation(); });
-                document.addEventListener('click', function(e) {
+                dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
+                document.addEventListener('click', function (e) {
                     if (lgBlock.classList.contains('opened') && !lgBlock.contains(e.target)) closeDropdown();
                 });
             }
@@ -4379,7 +5426,83 @@
             else initLangDropdown();
         })();
     </script>
+<script>
+// injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
+</script>
 
+</body>
+
+
+
+<script>
+  (function () {
+    const path = (location.pathname || "").toLowerCase();
+    const isRU = path.includes("/ru/");
+    const isEN = path.includes("/en/");
+    if (!isRU && !isEN) return; // root (am) не трогаем
+
+    const dict = isRU
+      ? {
+          "Մեր մասին": "О нас",
+          "Անդամակցության հայտ": "Заявка на членство",
+          "Հետադարձ կապ": "Контакты",
+          "Գործունեություն": "Деятельность",
+          "Անդամակցել": "Вступить",
+          "Անդամներ": "Члены",
+          "Նորություններ": "Новости",
+          "Միջոցառումներ": "Мероприятия",
+        }
+      : {
+          "Մեր մասին": "About Us",
+          "Անդամակցության հայտ": "Membership Application",
+          "Հետադարձ կապ": "Contact",
+          "Գործունեություն": "Activities",
+          "Անդամակցել": "Join",
+          "Անդամներ": "Members",
+          "Նորություններ": "News",
+          "Միջոցառումներ": "Events",
+        };
+
+    // Меняем текст в меню (menu_list и second_menu), только у ссылок
+    const menuLinks = document.querySelectorAll(
+      ".header .menu_list a, .header .second_menu .menu_list a"
+    );
+
+    menuLinks.forEach((a) => {
+      const t = (a.textContent || "").replace(/\s+/g, " ").trim();
+      if (dict[t]) a.textContent = dict[t];
+    });
+  })();
+</script>
+
+<script>
+  // Language dropdown toggle
+  (function () {
+    var btn = document.getElementById('lang_btn');
+    var dd = document.getElementById('lang_dropdown');
+    if (!btn || !dd) return;
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function () {
+      dd.style.display = 'none';
+    });
+  })();
+
+  // Mobile menu toggle (burger)
+  (function () {
+    var btn = document.querySelector('.header .menu_btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      document.body.classList.toggle('menu_opened');
+    });
+  })();
+</script>
 </body>
 
 </html>
