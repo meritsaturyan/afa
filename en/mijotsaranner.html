@@ -5264,24 +5264,31 @@
 
 <script>
 (function () {
-    var path = (window.location.pathname || '/').replace(/^\//, '').replace(/\/$/, '') || '';
-    var parts = path.split('/').filter(Boolean);
+    var pathname = window.location.pathname || '/';
+    var pathSegs = pathname.split('/').filter(Boolean);
+    var BASE = (pathSegs[0] === 'afa') ? '/afa' : '';
+    var segs = BASE ? pathSegs.slice(1) : pathSegs;
+
     var currentLang, currentFile;
-    if (parts[0] === 'ru' || parts[0] === 'en') {
-        currentLang = parts[0];
-        currentFile = parts[1] || 'index.html';
+    if (segs.length >= 2 && (segs[0] === 'ru' || segs[0] === 'en')) {
+        currentLang = segs[0];
+        currentFile = segs[1] || 'index.html';
+    } else if (segs.length >= 1) {
+        currentLang = 'am';
+        currentFile = segs[0] || 'index.html';
     } else {
         currentLang = 'am';
-        currentFile = parts[0] || 'index.html';
+        currentFile = 'index.html';
     }
-    var knownPages = ["index.html","andamakcutyan_hayt.html","andamner.html","ashxatatexer.html","gorcakir.html","gorcuneutyun.html","gorcynkerner.html","gorcynkerner_new.html","hetadardk_kap.html","inchuandamakcel.html","khorhurd.html","mermasin.html","mijotsaranner.html","norutyunner.html","tsarayutyunner.html"];
-    var pathSegs = window.location.pathname.split('/').filter(Boolean);
-    var BASE = (pathSegs[0] === 'afa') ? '/afa' : '';
+
+    var knownPages = ['index.html','andamakcutyan_hayt.html','andamner.html','ashxatatexer.html','gorcakir.html','gorcuneutyun.html','gorcynkerner.html','gorcynkerner_new.html','hetadardk_kap.html','inchuandamakcel.html','khorhurd.html','mermasin.html','mijotsaranner.html','norutyunner.html','norutyunner_hamajoxov.html','norutyunner_korporativ.html','norutyunner_scopus.html','tsarayutyunner.html'];
+    var file = knownPages.indexOf(currentFile) >= 0 ? currentFile : 'index.html';
+
     function getTargetUrl(targetLang) {
-        var file = knownPages.indexOf(currentFile) >= 0 ? currentFile : "index.html";
-        if (targetLang === "am") return BASE + "/" + file;
-        return BASE + "/" + targetLang + "/" + file;
+        if (targetLang === 'am') return BASE + '/' + file;
+        return BASE + '/' + targetLang + '/' + file;
     }
+
     var btn = document.getElementById('lang_btn');
     var links = document.querySelectorAll('#lang_dropdown .lang_link');
     if (!btn || !links.length) return;
@@ -5289,7 +5296,12 @@
     [].forEach.call(links, function (link) {
         var lang = link.getAttribute('data-lang');
         if (!lang) return;
-        link.setAttribute('href', getTargetUrl(lang));
+        var url = getTargetUrl(lang);
+        link.setAttribute('href', url);
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = url;
+        });
     });
 })();
 </script>
