@@ -5870,10 +5870,12 @@
         currentFile = parts[0] || 'index.html';
     }
     var knownPages = ["index.html","andamakcutyan_hayt.html","andamner.html","ashxatatexer.html","gorcakir.html","gorcuneutyun.html","gorcynkerner.html","gorcynkerner_new.html","hetadardk_kap.html","inchuandamakcel.html","khorhurd.html","mermasin.html","mijotsaranner.html","norutyunner.html","tsarayutyunner.html"];
+    var pathSegs = window.location.pathname.split('/').filter(Boolean);
+    var BASE = (pathSegs[0] === 'afa') ? '/afa' : '';
     function getTargetUrl(targetLang) {
         var file = knownPages.indexOf(currentFile) >= 0 ? currentFile : "index.html";
-        if (targetLang === "am") return "/" + file;
-        return "/" + targetLang + "/" + file;
+        if (targetLang === "am") return BASE + "/" + file;
+        return BASE + "/" + targetLang + "/" + file;
     }
     var btn = document.getElementById('lang_btn');
     var links = document.querySelectorAll('#lang_dropdown .lang_link');
@@ -5948,12 +5950,18 @@
 
   // Mobile menu toggle (burger)
   (function () {
-    var btn = document.querySelector('.header .menu_btn');
-    if (!btn) return;
-
-    btn.addEventListener('click', function () {
-      document.body.classList.toggle('menu_opened');
-    });
+    function initMobileMenu() {
+      var btn = document.querySelector('.header .menu_btn');
+      if (!btn) return;
+      function toggleMenu(e) {
+        if (e && e.type === 'touchend') e.preventDefault();
+        document.body.classList.toggle('menu_opened');
+      }
+      btn.addEventListener('click', toggleMenu);
+      btn.addEventListener('touchend', toggleMenu, { passive: false });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
+    else initMobileMenu();
   })();
 </script>
 </body>
