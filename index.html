@@ -578,6 +578,7 @@
                 column-gap: 8px;
                 min-width: 96px;
                 max-width: 96px;
+                margin-left: 24px;
             }
             .header_actions .search_block {
                 order: 1;
@@ -596,6 +597,7 @@
                 column-gap: 8px;
                 min-width: 96px;
                 max-width: 96px;
+                margin-left: 24px;
             }
             .header_actions .search_block {
                 width: auto;
@@ -4129,6 +4131,8 @@
     max-width: 128px !important;
   }
 
+  .header_main .second_menu { margin-right: 24px !important; }
+  .header_actions { margin-left: 24px !important; }
   .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
   .header_actions .lg_block { order: 2 !important; }
   .header_actions .menu_btn { order: 3 !important; }
@@ -4295,6 +4299,8 @@
     max-width: 128px !important;
   }
 
+  .header_main .second_menu { margin-right: 24px !important; }
+  .header_actions { margin-left: 24px !important; }
   .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
   .header_actions .lg_block { order: 2 !important; }
   .header_actions .menu_btn { order: 3 !important; }
@@ -4461,6 +4467,8 @@
     max-width: 128px !important;
   }
 
+  .header_main .second_menu { margin-right: 24px !important; }
+  .header_actions { margin-left: 24px !important; }
   .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
   .header_actions .lg_block { order: 2 !important; }
   .header_actions .menu_btn { order: 3 !important; }
@@ -4627,6 +4635,8 @@
     max-width: 128px !important;
   }
 
+  .header_main .second_menu { margin-right: 24px !important; }
+  .header_actions { margin-left: 24px !important; }
   .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
   .header_actions .lg_block { order: 2 !important; }
   .header_actions .menu_btn { order: 3 !important; }
@@ -5021,6 +5031,29 @@
   }
 }
 </style>
+
+<style>
+@media screen and (min-width: 960px) {
+  .header_main {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+
+  .header_org_name { margin-right: auto !important; }
+
+  .header_main .second_menu {
+    flex: 0 1 auto !important;
+    margin-right: 14px !important;
+    transform: translateX(-6px);
+  }
+
+  .header_main .header_actions {
+    flex: 0 0 auto !important;
+  }
+}
+</style>
+
 </head>
 
 <body class="body-am body-page body-page-1 " id="top">
@@ -5095,8 +5128,8 @@
           <li>
             <a class="submenu_btn" href="norutyunner.html">Նորություններ</a>
             <ul class="submenu_list">
-              <li><a href="gorcakir.html">Հայտարարություն</a></li>
-              <li><a href="tsarayutyunner.html">Հարցազրույցներ</a></li>
+              <li><a href="haytararutyunner.html">Հայտարարություն</a></li>
+              <li><a href="harotsaruytsner.html">Հարցազրույցներ</a></li>
             </ul>
           </li>
           <li><a href="mijotsaranner.html">Միջոցառումներ</a></li>
@@ -6121,7 +6154,18 @@
                             $(".drop_btn").click(dropToggle),
                             $(".drop_block").click(ignorBodyClick),
                             $('.search_block button[type="submit"]').click((function (e) {
-                                $(".search_block").data("type") && "close" == $(".search_block").data("type") ? toggleSearch(e) : focusEmptySearch(e)
+                                e.preventDefault();
+                                if ($(".search_block").data("type") && $(".search_block").data("type") === "close") {
+                                    if (!$(".search_block").hasClass("opened")) {
+                                        closeAllMenues(e);
+                                        $(".search_block").addClass("opened").find("input").focus();
+                                    } else {
+                                        $(".search_block input").val() || $(".search_block input").focus();
+                                    }
+                                } else {
+                                    focusEmptySearch(e);
+                                }
+                                e.stopPropagation();
                             }
                             )),
                             $(".search_block input").click((function (e) {
@@ -13439,7 +13483,7 @@
         currentFile = 'index.html';
     }
 
-    var knownPages = ['index.html','andamakcutyan_hayt.html','andamner.html','ashxatatexer.html','gorcakir.html','gorcuneutyun.html','gorcynkerner.html','gorcynkerner_new.html','hetadardk_kap.html','inchuandamakcel.html','khorhurd.html','mermasin.html','mijotsaranner.html','norutyunner.html','norutyunner_hamajoxov.html','norutyunner_korporativ.html','norutyunner_scopus.html','tsarayutyunner.html'];
+    var knownPages = ['index.html','andamakcutyan_hayt.html','andamner.html','ashxatatexer.html','gorcakir.html','gorcuneutyun.html','gorcynkerner.html','gorcynkerner_new.html','hetadardk_kap.html','inchuandamakcel.html','khorhurd.html','mermasin.html','mijotsaranner.html','norutyunner.html','norutyunner_hamajoxov.html','norutyunner_korporativ.html','norutyunner_scopus.html','tsarayutyunner.html','haytararutyunner.html','harotsaruytsner.html'];
     var file = knownPages.indexOf(currentFile) >= 0 ? currentFile : 'index.html';
 
     function getTargetUrl(targetLang) {
@@ -13541,6 +13585,22 @@
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
     else initMobileMenu();
+  })();
+  // Search (lupa): open input on click
+  (function () {
+    var block = document.querySelector(".header .search_block");
+    if (!block) return;
+    var btn = block.querySelector("button[type=submit]");
+    var input = block.querySelector("input");
+    if (!btn || !input) return;
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (block.getAttribute("data-type") === "close") {
+        block.classList.add("opened");
+        input.focus();
+      }
+    });
   })();
 </script>
 </body>

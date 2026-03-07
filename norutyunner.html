@@ -3803,6 +3803,8 @@
     max-width: 128px !important;
   }
 
+  .header_main .second_menu { margin-right: 24px !important; }
+  .header_actions { margin-left: 24px !important; }
   .header_actions .search_block { order: 1 !important; margin-top: 4px !important; }
   .header_actions .lg_block { order: 2 !important; }
   .header_actions .menu_btn { order: 3 !important; }
@@ -4697,6 +4699,29 @@
 
 </style>
 
+
+<style>
+@media screen and (min-width: 960px) {
+  .header_main {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+
+  .header_org_name { margin-right: auto !important; }
+
+  .header_main .second_menu {
+    flex: 0 1 auto !important;
+    margin-right: 14px !important;
+    transform: translateX(-6px);
+  }
+
+  .header_main .header_actions {
+    flex: 0 0 auto !important;
+  }
+}
+</style>
+
 </head>
 
 <body class="body-am body-activities body-activities-index body-page body-page-26 " id="top">
@@ -5488,6 +5513,22 @@
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
     else initMobileMenu();
+  })();
+  // Search (lupa): open input on click
+  (function () {
+    var block = document.querySelector(".header .search_block");
+    if (!block) return;
+    var btn = block.querySelector("button[type=submit]");
+    var input = block.querySelector("input");
+    if (!btn || !input) return;
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (block.getAttribute("data-type") === "close") {
+        block.classList.add("opened");
+        input.focus();
+      }
+    });
   })();
 </script>
 </body>
