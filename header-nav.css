@@ -1,0 +1,21 @@
+/* ================================================================
+   Header Navigation — Bold & Size
+   Activities / Join / Members / News / Events
+   Applied globally across all pages (AM / EN / RU)
+   ================================================================ */
+
+/* Desktop nav (visible ≥960px inside .menu_inner) */
+.header .menu_inner > .menu_list > li > a {
+  font-family: CormorantBold, GAAGayane-Bold, montserratarm-bold, montserrat-bold !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+}
+
+/* Mobile nav (visible <960px inside .menu_block) */
+@media screen and (max-width: 959px) {
+  .header .menu_block .menu_list > li > a {
+    font-family: CormorantBold, GAAGayane-Bold, montserratarm-bold, montserrat-bold !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+  }
+}

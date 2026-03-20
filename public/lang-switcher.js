@@ -23,7 +23,7 @@
         currentFile = 'index.html';
     }
 
-    var knownPages = ['index.html','andamakcutyan_hayt.html','andamner.html','ashxatatexer.html','gorcakir.html','gorcuneutyun.html','gorcynkerner.html','gorcynkerner_new.html','hetadardk_kap.html','inchuandamakcel.html','khorhurd.html','mermasin.html','mijotsaranner.html','norutyunner.html','norutyunner_hamajoxov.html','norutyunner_korporativ.html','norutyunner_scopus.html','tsarayutyunner.html','haytararutyunner.html','harotsaruytsner.html'];
+    var knownPages = ['index.html','andamakcutyan_hayt.html','andamner.html','ashxatatexer.html','gorcakir.html','gorcuneutyun.html','gorcynkerner.html','gorcynkerner_new.html','hetadardk_kap.html','inchuandamakcel.html','khorhurd.html','mermasin.html','mijotsaranner.html','norutyunner.html','norutyunner_hamajoxov.html','norutyunner_korporativ.html','norutyunner_scopus.html','tsarayutyunner.html','andamakcutyan_karg.html','haytararutyunner.html','harotsaruytsner.html'];
     var file = knownPages.indexOf(currentFile) >= 0 ? currentFile : 'index.html';
 
     function getTargetUrl(targetLang) {
