@@ -22,7 +22,7 @@
 .header .second_menu .submenu_list a {
   font-family: montserrat, montserratarm, sans-serif !important;
   font-weight: 400 !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 
 /* Main nav links: Activities / Join / Members / News / Events */
@@ -47,10 +47,11 @@
   .header .second_menu a {
     font-size: 13px !important;
   }
+  /* About dropdown items — font only; spacing handled by header-nav.css */
   .header .second_menu .submenu_btn,
   .header .second_menu .submenu_list a {
     font-family: montserrat, montserratarm, sans-serif !important;
     font-weight: 400 !important;
-    font-size: 12px !important;
+    font-size: 15px !important;
   }
 }
