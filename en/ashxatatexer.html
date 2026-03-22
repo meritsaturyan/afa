@@ -16,12 +16,12 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Jobs – AFA</title>
-    <meta name="description" content="">
+    <title>Career opportunities – AFA</title>
+    <meta name="description" content="Career opportunities from partner organisations. Apply through the Association of Accountants and Auditors of Armenia (mediator job board).">
     <meta name="keywords" content="">
 
     <meta property="og:site_name" content="AFA">
-    <meta property="og:title" content="Jobs">
+    <meta property="og:title" content="Career opportunities">
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
     <meta property="og:url" content="#">
@@ -5149,6 +5149,8 @@
 
 <link rel="stylesheet" href="../header-nav.css">
 <link rel="stylesheet" href="en-header.css">
+<link rel="stylesheet" href="../footer-layout.css">
+<link rel="stylesheet" href="../jobs-board.css">
 </head>
 
 
@@ -5242,127 +5244,73 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="mermasin.html">About us</a></li>
                     <li>
-                        <div>Jobs</div>
+                        <div>Career opportunities</div>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <!-- Page Header with Title -->
         <div class="page_header_section">
             <div class="page_container">
-                <h1 class="page_main_title">
-                    Jobs
-                </h1>
+                <h1 class="page_main_title">Career opportunities</h1>
             </div>
         </div>
 
-        <!-- Main Content - Two Column Layout -->
         <div class="inner_content_section">
             <div class="page_container">
-                <div class="page_row content_row">
-                    <!-- Jobs Section -->
-                    <div class="jobs_section">
-                        <div class="jobs_intro">
-                            <p class="standard_text">
-                                AFA offers opportunities for professionals who want to work in our team and contribute to the development of Armenia's business community.
-                            </p>
-                        </div>
-
-                        <!-- Jobs List -->
-                        <div class="jobs_list">
-                            <div class="job_card">
-                                <div class="job_header">
-                                    <div class="job_icon">💼</div>
-                                    <div class="job_title_block">
-                                        <h3 class="job_title">Programme coordinator</h3>
-                                        <p class="job_location">📍 Yerevan, Armenia</p>
-                                    </div>
-                                    <span class="job_type">Full time</span>
-                                </div>
-                                <div class="job_description">
-                                    <p><strong>Responsibilities:</strong></p>
-                                    <ul>
-                                        <li>Coordinate implementation of the Association's programmes and initiatives</li>
-                                        <li>Work with project teams</li>
-                                        <li>Prepare reports and presentations</li>
-                                    </ul>
-                                    <p><strong>Requirements:</strong></p>
-                                    <ul>
-                                        <li>Higher education</li>
-                                        <li>Project management experience</li>
-                                        <li>Knowledge of Armenian, English and Russian</li>
-                                    </ul>
-                                </div>
-                                <a href="#" class="apply_button">Apply</a>
-                            </div>
-
-                            <div class="job_card">
-                                <div class="job_header">
-                                    <div class="job_icon">📊</div>
-                                    <div class="job_title_block">
-                                        <h3 class="job_title">Analyst</h3>
-                                        <p class="job_location">📍 Yerevan, Armenia</p>
-                                    </div>
-                                    <span class="job_type">Full time</span>
-                                </div>
-                                <div class="job_description">
-                                    <p><strong>Responsibilities:</strong></p>
-                                    <ul>
-                                        <li>Analyse economic and business data</li>
-                                        <li>Prepare research reports</li>
-                                        <li>Support strategic decision-making</li>
-                                    </ul>
-                                    <p><strong>Requirements:</strong></p>
-                                    <ul>
-                                        <li>Economics or statistics degree</li>
-                                        <li>Analytical skills</li>
-                                        <li>Knowledge of Excel and statistical software</li>
-                                    </ul>
-                                </div>
-                                <a href="#" class="apply_button">Apply</a>
-                            </div>
-
-                            <div class="job_card">
-                                <div class="job_header">
-                                    <div class="job_icon">📝</div>
-                                    <div class="job_title_block">
-                                        <h3 class="job_title">Communications specialist</h3>
-                                        <p class="job_location">📍 Yerevan, Armenia</p>
-                                    </div>
-                                    <span class="job_type">Full time</span>
-                                </div>
-                                <div class="job_description">
-                                    <p><strong>Responsibilities:</strong></p>
-                                    <ul>
-                                        <li>Organise events and meetings</li>
-                                        <li>Maintain relations with partners</li>
-                                        <li>Support marketing activities</li>
-                                    </ul>
-                                    <p><strong>Requirements:</strong></p>
-                                    <ul>
-                                        <li>Communications management experience</li>
-                                        <li>Communication skills</li>
-                                        <li>Good organisational skills</li>
-                                    </ul>
-                                </div>
-                                <a href="#" class="apply_button">Apply</a>
-                            </div>
-                        </div>
+                <div class="jobs-board-page" id="jobs-board-root">
+                    <div class="jobs-board-hero">
+                        <p class="jobs-board-desc">Opportunities listed here are provided by the Association’s partner organisations. Applications are accepted only through the Association.</p>
+                        <p class="jobs-board-note">This is a mediator job board: employer names and direct contact details are not shown. There is no direct application to the company — all communication goes through the Association.</p>
                     </div>
+
+                    <form class="jobs-filters" id="jobs-filter-form" onsubmit="return false;">
+                        <label><span id="jobs-label-category"></span><select id="jobs-filter-category" name="category" aria-label="Category"></select></label>
+                        <label><span id="jobs-label-experience"></span><select id="jobs-filter-experience" name="experience" aria-label="Experience"></select></label>
+                        <label><span id="jobs-label-employment"></span><select id="jobs-filter-employment" name="employment_type" aria-label="Employment type"></select></label>
+                        <label><span id="jobs-label-search"></span><input type="search" id="jobs-filter-search" name="search" autocomplete="off" aria-label="Search"></label>
+                    </form>
+
+                    <div id="jobs-board-loading" class="jobs-board-loading" aria-live="polite"></div>
+                    <div id="jobs-board-empty" class="jobs-board-empty hidden" aria-live="polite"></div>
+                    <div id="jobs-board-list" class="jobs-board-list"></div>
                 </div>
             </div>
         </div>
 
     </div>
 
+    <div id="jobs-apply-modal" class="jobs-modal" hidden>
+        <div class="jobs-modal__dialog" role="dialog" aria-labelledby="jobs-modal-title">
+            <button type="button" class="jobs-modal__close" id="jobs-modal-close" aria-label="Close">&times;</button>
+            <h2 class="jobs-modal__title" id="jobs-modal-title"></h2>
+            <p class="jobs-modal__subtitle"></p>
+            <form id="jobs-apply-form" class="jobs-form" enctype="multipart/form-data" novalidate>
+                <label><span id="jobs-field-fn-label"></span><input type="text" name="first_name" required autocomplete="given-name"></label>
+                <label><span id="jobs-field-ln-label"></span><input type="text" name="last_name" required autocomplete="family-name"></label>
+                <label><span id="jobs-field-phone-label"></span><input type="tel" name="phone" required autocomplete="tel" placeholder="+374XXXXXXXX"></label>
+                <label><span id="jobs-field-email-label"></span><input type="email" name="email" required autocomplete="email"></label>
+                <label><span id="jobs-field-cv-label"></span><input type="file" name="cv_file" required accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
+                <label><span id="jobs-field-msg-label"></span><textarea name="message" rows="3" autocomplete="off"></textarea></label>
+                <button type="submit" class="jobs-board-btn"></button>
+            </form>
+            <div class="jobs-modal__success" hidden>
+                <p id="jobs-success-line1"></p>
+                <p id="jobs-success-line2"></p>
+                <button type="button" class="jobs-board-btn" id="jobs-success-close"></button>
+            </div>
+        </div>
+    </div>
+
     <div class="footer" style="opacity: 1;">
         <div class="footer_top">
             <div class="page_container">
                 <div class="page_row">
-                    <div class="footer_menu">
-                        <ul class="menu_list" style="position: relative; height: 279px;">
-                            <li style="position: absolute; left: 0%; top: 0px;">
+                                        <div class="footer_menu">
+                        <div class="footer_nav_columns">
+                            <div class="footer_nav_col footer_nav_col--about">
+                                <ul class="menu_list menu_list--footer">
+                                    <li>
                                 <a class="submenu_btn" href="mermasin.html">
                                     About
                                 </a>
@@ -5399,7 +5347,11 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li style="position: absolute; left: 50%; top: 0px;">
+                                </ul>
+                            </div>
+                                                        <div class="footer_nav_col footer_nav_col--join">
+                                <ul class="menu_list menu_list--footer">
+                                    <li>
                                 <a class="submenu_btn" href="inchuandamakcel.html">
                                     Join
                                 </a>
@@ -5421,35 +5373,45 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li style="position: absolute; left: 50%; top: 110px;">
+                                </ul>
+                            </div>
+                            <div class="footer_nav_col footer_nav_col--quick">
+                                <ul class="menu_list menu_list--footer">
+                                    <li>
                                 <a class="" href="gorcuneutyun.html">
                                     Activities
                                 </a>
                             </li>
-                            <li style="position: absolute; left: 50%; top: 148px;">
+                                    <li>
                                 <a class="" href="andamner.html">
                                     Members
                                 </a>
                             </li>
-                            <li style="position: absolute; left: 50%; top: 186px;">
+                                    <li>
                                 <a class="" href="norutyunner.html">
                                     News
                                 </a>
                             </li>
-                            <li style="position: absolute; left: 0%; top: 203px;">
+                                    <li>
                                 <a class="" href="mijotsaranner.html">
                                     Events
                                 </a>
                             </li>
-                            <li style="position: absolute; left: 0%; top: 241px;">
+                                </ul>
+                            </div>
+                            <div class="footer_nav_col footer_nav_col--feedback">
+                                <ul class="menu_list menu_list--footer">
+                                    <li>
                                 <a class="" href="hetadardk_kap.html">
                                     Contacts
                                 </a>
                             </li>
-                        </ul>
+                                </ul>
+                            </div>
+                        </div>
 
                     </div>
-                    <div class="footer_contacts">
+<div class="footer_contacts">
                         <div class="footer_subtitle">Contact details</div>
                         <ul class="contacts_list">
                             <li>Yerevan, 0012, 12 Vagharshyan St.</li>
@@ -5954,6 +5916,8 @@
     });
   })();
 </script>
+<script>window.JOBS_API_BASE = window.JOBS_API_BASE || "";</script>
+<script src="../jobs-board.js" defer></script>
 </body>
 
 </html>

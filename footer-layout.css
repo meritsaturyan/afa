@@ -1,0 +1,333 @@
+/**
+ * Global footer layout, spacing & typography (AM / RU / EN)
+ * Loads after header-nav.css — uses !important to override legacy inline/footer rules.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Armenian:wght@400;600&family=Noto+Sans:wght@400;600&display=swap");
+
+/* ---- Typography (unified) ---- */
+.footer,
+.footer .footer_top,
+.footer .footer_bottom {
+  font-family: Inter, "Noto Sans Armenian", "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+.footer .footer_subtitle {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  font-family: Inter, "Noto Sans Armenian", "Noto Sans", system-ui, sans-serif !important;
+  line-height: 1.5 !important;
+  margin-bottom: 10px !important;
+}
+
+.footer .menu_list > li > a,
+.footer .submenu_btn {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  font-family: Inter, "Noto Sans Armenian", "Noto Sans", system-ui, sans-serif !important;
+  line-height: 1.45 !important;
+}
+
+.footer .submenu_list li a,
+.footer .contacts_list li,
+.footer .contacts_list a,
+.footer .copyrights,
+.footer .footer_contacts a {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  font-family: Inter, "Noto Sans Armenian", "Noto Sans", system-ui, sans-serif !important;
+  line-height: 1.55 !important;
+}
+
+/* ---- No collisions / long words (hy, ru, en) ---- */
+.footer a,
+.footer li,
+.footer p,
+.footer .footer_subtitle,
+.footer .copyrights {
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.footer svg {
+  word-break: normal;
+  overflow: visible;
+}
+
+/* ---- Main row: menu + contacts ---- */
+.footer .footer_top .page_row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 32px 40px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Mobile-first: full width until tablet+ */
+.footer .footer_menu {
+  flex: 1 1 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Desktop/tablet: menu + contacts on one row (avoid contacts stacking under col 1) */
+@media screen and (min-width: 769px) {
+  .footer .footer_top .page_row {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+  }
+
+  .footer .footer_menu {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  .footer .footer_contacts {
+    flex: 0 0 auto !important;
+    min-width: 220px !important;
+    max-width: 320px !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* Mid widths: closer to original proportions */
+@media screen and (min-width: 960px) and (max-width: 1199px) {
+  .footer .footer_menu {
+    flex: 1 1 0% !important;
+    max-width: 75% !important;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 959px) {
+  .footer .footer_menu {
+    flex: 1 1 0% !important;
+    max-width: calc(100% - 300px) !important;
+  }
+
+  .footer .footer_contacts {
+    flex: 0 0 33.333% !important;
+    max-width: 33.333% !important;
+    min-width: 200px !important;
+  }
+}
+
+/*
+ * Footer nav: independent columns (no shared grid rows) — about | join+submenu | quick links | feedback.
+ */
+.footer .footer_nav_columns {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 28px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer .footer_nav_col {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Each column has its own list — vertical stack, no coupling to other columns */
+.footer .footer_menu .menu_list--footer {
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 14px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.footer .footer_menu .menu_list--footer > li {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  flex: 0 0 auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media screen and (min-width: 769px) {
+  .footer .footer_nav_columns {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 28px 36px !important;
+  }
+
+  .footer .footer_nav_col--about {
+    flex: 1 1 220px !important;
+    max-width: 320px !important;
+  }
+
+  .footer .footer_nav_col--join {
+    flex: 1 1 200px !important;
+    max-width: 260px !important;
+  }
+
+  .footer .footer_nav_col--quick {
+    flex: 1 1 160px !important;
+    max-width: 220px !important;
+  }
+
+  .footer .footer_nav_col--feedback {
+    flex: 0 0 auto !important;
+    min-width: 120px !important;
+    max-width: 200px !important;
+  }
+
+  .footer .footer_menu .menu_list--footer {
+    gap: 12px !important;
+  }
+}
+
+/* Column lists */
+.footer .footer_menu .submenu_list,
+.footer .contacts_list {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.footer .footer_menu .submenu_list li {
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  padding-bottom: 0 !important;
+}
+
+.footer .footer_menu .submenu_list li:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.footer .contacts_list li {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
+}
+
+.footer .contacts_list li:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Contact block — padding/alignment only; flex sizes live in media queries (avoid overriding desktop) */
+.footer .footer_contacts {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: right !important;
+}
+
+.footer .footer_contacts a {
+  white-space: normal !important;
+  text-overflow: unset !important;
+  display: inline !important;
+  max-width: 100% !important;
+}
+
+.footer .socials_list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 16px 24px !important;
+  margin-top: 20px !important;
+}
+
+.footer .socials_list li {
+  margin-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.footer .footer_top a {
+  display: inline-block !important;
+  vertical-align: top !important;
+  max-width: 100% !important;
+}
+
+/* Bottom bar */
+.footer .footer_bottom .page_row {
+  justify-content: center !important;
+  gap: 12px !important;
+}
+
+.footer .copyrights {
+  max-width: 100% !important;
+  text-align: center !important;
+  padding: 8px 10px !important;
+}
+
+/* Light mode footer */
+.footer.light_mode .footer_top {
+  color: #2e2e2e !important;
+}
+
+.footer.light_mode .footer_subtitle,
+.footer.light_mode .menu_list > li > a,
+.footer.light_mode .submenu_btn {
+  color: inherit !important;
+}
+
+/* ---- Responsive ---- */
+@media screen and (max-width: 768px) {
+  .footer .footer_top .page_row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 28px !important;
+  }
+
+  .footer .footer_menu {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+
+  .footer .footer_nav_columns {
+    gap: 24px !important;
+  }
+
+  .footer .footer_menu .menu_list--footer > li {
+    max-width: 100% !important;
+  }
+
+  .footer .footer_contacts {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+
+  .footer .socials_list {
+    justify-content: flex-start !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .footer .footer_menu .menu_list--footer {
+    gap: 12px !important;
+  }
+
+  .footer .footer_menu .menu_list--footer > li {
+    max-width: 100% !important;
+  }
+}
