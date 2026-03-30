@@ -13195,10 +13195,6 @@
 // injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
 </script>
 
-</body>
-
-
-
 <script>
   (function () {
     const path = (location.pathname || "").toLowerCase();
@@ -13241,117 +13237,9 @@
 </script>
 
 <script>
-  // Language dropdown toggle
-  (function () {
-    var btn = document.getElementById('lang_btn');
-    var dd = document.getElementById('lang_dropdown');
-    if (!btn || !dd) return;
-
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function () {
-      dd.style.display = 'none';
-    });
-  })();
-
-  // Mobile menu toggle (burger)
-  (function () {
-    function initMobileMenu() {
-      var btn = document.querySelector('.header .menu_btn');
-      if (!btn) return;
-      function toggleMenu(e) {
-        if (e && e.type === 'touchend') e.preventDefault();
-        document.body.classList.toggle('menu_opened');
-      }
-      btn.addEventListener('click', toggleMenu);
-      btn.addEventListener('touchend', toggleMenu, { passive: false });
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
-    else initMobileMenu();
-  })();
-  // Search (lupa): open input on click
-  (function () {
-    var block = document.querySelector(".header .search_block");
-    if (!block) return;
-    var btn = block.querySelector("button[type=submit]");
-    var input = block.querySelector("input");
-    if (!btn || !input) return;
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (block.getAttribute("data-type") === "close") {
-        block.classList.add("opened");
-        input.focus();
-      }
-    });
-  })();
+  window.CMS_ORIGIN = window.CMS_ORIGIN || "http://localhost:3847";
 </script>
-
-<script>
-  /* ===== HERO CROSSFADE ROTATOR ===== */
-  (function () {
-    var images = [
-      '../public/background.jpg',
-      '../public/hamajoxov.jpg',
-      '../public/korporativ.jpg',
-      '../public/hamajoxov5.jpg',
-      '../public/korporativ1.jpg'
-    ];
-
-    var layerA   = document.getElementById('heroLayerA');
-    var layerB   = document.getElementById('heroLayerB');
-    var dotsWrap = document.getElementById('heroDots');
-    if (!layerA || !layerB) return;
-
-    var current  = 0;
-    var imgIndex = 0;
-    var dots     = [];
-
-    images.forEach(function (src) { new Image().src = src; });
-
-    images.forEach(function (_, i) {
-      var d = document.createElement('button');
-      d.className = 'hero_dot';
-      d.setAttribute('aria-label', 'Slide ' + (i + 1));
-      d.addEventListener('click', function () { goTo(i); });
-      dotsWrap.appendChild(d);
-      dots.push(d);
-    });
-
-    function setActiveDot(i) {
-      dots.forEach(function (d, idx) { d.classList.toggle('active', idx === i); });
-    }
-
-    function goTo(idx) {
-      imgIndex = idx;
-      var url = "url('" + images[idx] + "')";
-      if (current === 0) {
-        layerB.style.backgroundImage = url;
-        layerB.style.opacity = '1';
-        layerA.style.opacity = '0';
-        current = 1;
-      } else {
-        layerA.style.backgroundImage = url;
-        layerA.style.opacity = '1';
-        layerB.style.opacity = '0';
-        current = 0;
-      }
-      setActiveDot(idx);
-    }
-
-    layerA.style.backgroundImage = "url('" + images[0] + "')";
-    layerA.style.opacity = '1';
-    setActiveDot(0);
-
-    setInterval(function () {
-      goTo((imgIndex + 1) % images.length);
-    }, 3000);
-  })();
-</script>
+<script defer src="../cms-loader.js"></script>
 </body>
 
 </html>

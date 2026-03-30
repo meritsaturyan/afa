@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AFA — կայքի ադմինիստրացիա</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="login-screen" class="login-wrap">
+    <h1>Մուտք ադմինիստրացիա</h1>
+    <div id="login-err" class="err hidden"></div>
+    <label for="pw">Գաղտնաբառ</label>
+    <input type="password" id="pw" autocomplete="current-password">
+    <button type="button" id="btn-login">Մուտք</button>
+  </div>
+
+  <div id="app" class="hidden">
+    <header class="app-header">
+      <h1>AFA CMS</h1>
+      <div class="row" style="margin:0">
+        <button type="button" class="secondary" id="btn-reload">Թարմացնել տվյալները</button>
+        <button type="button" class="secondary" id="btn-logout">Ելք</button>
+      </div>
+    </header>
+    <nav class="tabs">
+      <button type="button" class="tab active" data-tab="home">Գլխավոր (hero, մեր մասին, բլոկներ)</button>
+      <button type="button" class="tab" data-tab="news">Նորություններ</button>
+      <button type="button" class="tab" data-tab="pages">Էջեր (բաժիններ)</button>
+      <button type="button" class="tab" data-tab="media">Մեդիա</button>
+      <button type="button" class="tab" data-tab="json">JSON (ամբողջը)</button>
+    </nav>
+
+    <div id="tab-home" class="panel">
+      <h2>Hero պատկերներ (սլայդեր)</h2>
+      <p class="upload-list">Մեկ ճանապարհ տողում՝ <code>public/...</code> կամ բեռնեք ֆայլը «Մեդիա» ներդիրում և տեղադրեք <code>/uploads/...</code></p>
+      <textarea id="hero-images" rows="6" placeholder="public/background.jpg"></textarea>
+
+      <h2>Hero տեքստ (լեզուներ)</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Հայերեն (am)</h3>
+          <label>Տեքստ</label>
+          <textarea id="hero-am-text" rows="3"></textarea>
+          <label>Կոճակ</label>
+          <input type="text" id="hero-am-cta">
+          <label>Կոճակի հղում</label>
+          <input type="text" id="hero-am-href">
+        </div>
+        <div class="card">
+          <h3>English</h3>
+          <label>Text</label>
+          <textarea id="hero-en-text" rows="3"></textarea>
+          <label>Button</label>
+          <input type="text" id="hero-en-cta">
+          <label>Button href</label>
+          <input type="text" id="hero-en-href">
+        </div>
+        <div class="card">
+          <h3>Ռուսերեն</h3>
+          <label>Տեքստ</label>
+          <textarea id="hero-ru-text" rows="3"></textarea>
+          <label>Կոճակ</label>
+          <input type="text" id="hero-ru-cta">
+          <label>Հղում</label>
+          <input type="text" id="hero-ru-href">
+        </div>
+      </div>
+
+      <h2>«Մեր մասին» բլոկ</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>AM</h3>
+          <label>Վերնագիր</label>
+          <input type="text" id="about-am-title">
+          <label>Տեքստի HTML</label>
+          <textarea id="about-am-body" rows="4"></textarea>
+          <label>Կոճակ</label>
+          <input type="text" id="about-am-bt">
+          <label>Հղում</label>
+          <input type="text" id="about-am-bh">
+        </div>
+        <div class="card">
+          <h3>EN</h3>
+          <label>Title</label>
+          <input type="text" id="about-en-title">
+          <label>Body HTML</label>
+          <textarea id="about-en-body" rows="4"></textarea>
+          <label>Button</label>
+          <input type="text" id="about-en-bt">
+          <label>Href</label>
+          <input type="text" id="about-en-bh">
+        </div>
+        <div class="card">
+          <h3>RU</h3>
+          <label>Վերնագիր</label>
+          <input type="text" id="about-ru-title">
+          <label>HTML</label>
+          <textarea id="about-ru-body" rows="4"></textarea>
+          <label>Կոճակ</label>
+          <input type="text" id="about-ru-bt">
+          <label>Հղում</label>
+          <input type="text" id="about-ru-bh">
+        </div>
+      </div>
+
+      <h2>Նորությունների բաժին (վերնագրեր)</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>AM</h3>
+          <input type="text" id="ns-am-t" placeholder="Բաժնի վերնագիր">
+          <input type="text" id="ns-am-v" placeholder="«Բոլորը» տեքստ">
+          <input type="text" id="ns-am-h" placeholder="Հղում">
+        </div>
+        <div class="card">
+          <h3>EN</h3>
+          <input type="text" id="ns-en-t">
+          <input type="text" id="ns-en-v">
+          <input type="text" id="ns-en-h">
+        </div>
+        <div class="card">
+          <h3>RU</h3>
+          <input type="text" id="ns-ru-t">
+          <input type="text" id="ns-ru-v">
+          <input type="text" id="ns-ru-h">
+        </div>
+      </div>
+
+      <h2>Անդամակցության առավելություններ (JSON զանգված)</h2>
+      <textarea id="membership-json" rows="12"></textarea>
+
+      <h2>Վիճակագրության բլոկ (JSON)</h2>
+      <textarea id="stats-json" rows="10"></textarea>
+
+      <div class="row" style="margin-top:20px">
+        <button type="button" id="btn-save-home">Պահպանել գլխավոր էջը</button>
+        <span id="save-msg-home" class="upload-list"></span>
+      </div>
+    </div>
+
+    <div id="tab-news" class="panel hidden">
+      <h2>Գլխավորի նորություններ (մինչև 6 տվյալներում, կայքում՝ առաջին 3-ը)</h2>
+      <div class="row">
+        <button type="button" id="btn-add-news">Ավելացնել</button>
+        <button type="button" id="btn-save-news">Պահպանել նորությունները</button>
+        <span id="save-msg-news" class="upload-list"></span>
+      </div>
+      <div id="news-editor"></div>
+    </div>
+
+    <div id="tab-pages" class="panel hidden">
+      <h2>Բաժինների գրառումներ (նկար + տեքստեր am/en/ru)</h2>
+      <p class="upload-list">Էջեր՝ Գործունեություն, Խորհուրդ, Գործադիր, Հանձնաժողովներ, Աշխատատեղեր, Անդամներ, Միջոցառումներ, Հարցազրույցներ, Հայտարարություններ։ Խորհրդի և գործադիրի համար լրացրեք «Պաշտոն» և «Տեքստ» դաշտերը։ Ցանցի համար՝ կարճ անոնս՝ ըստ ցանկության։</p>
+      <div class="row" style="align-items:center;flex-wrap:wrap;gap:12px">
+        <label for="page-slug-select">Բաժին</label>
+        <select id="page-slug-select"></select>
+        <span id="page-layout-hint" class="upload-list"></span>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <button type="button" id="btn-add-page-post">Ավելացնել գրառում</button>
+        <button type="button" id="btn-save-pages">Պահպանել այս բաժինը</button>
+        <span id="save-msg-pages" class="upload-list"></span>
+      </div>
+      <div id="pages-editor"></div>
+    </div>
+
+    <div id="tab-media" class="panel hidden">
+      <h2>Ֆայլերի բեռնում</h2>
+      <div class="upload-zone">
+        <input type="file" id="file-up" accept="image/*,application/pdf">
+        <p>Նկարներ մինչև 12 ՄԲ։ Բեռնումից հետո պատճենեք URL-ը hero կամ նորության դաշտում։</p>
+      </div>
+      <div id="upload-result" class="card hidden"></div>
+      <p class="upload-list">Ֆայլեր՝ սկավառակում <code>server/uploads/</code>, URL՝ <code>/uploads/ֆայլի_անուն</code></p>
+    </div>
+
+    <div id="tab-json" class="panel hidden">
+      <h2>Ամբողջ site.json</h2>
+      <p class="upload-list">Ուշադիր՝ սխալ JSON-ը կխափանի պահպանումը։</p>
+      <textarea id="full-json" rows="28"></textarea>
+      <div class="row" style="margin-top:16px">
+        <button type="button" id="btn-save-json">Պահպանել JSON</button>
+        <span id="save-msg-json" class="upload-list"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

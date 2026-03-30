@@ -1,0 +1,103 @@
+/* Shared grid for CMS-driven page feeds (gorcuneutyun-style cards). */
+.listing_inner.cms-page-wrap {
+  padding: 40px 0;
+}
+
+.listing_inner.cms-page-wrap .news_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listing_inner.cms-page-wrap .news_list li {
+  margin: 0;
+  padding: 0;
+}
+
+.listing_inner.cms-page-wrap .news_block {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fefefe;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing_inner.cms-page-wrap .news_block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.listing_inner.cms-page-wrap .news_block .image_block {
+  width: 100%;
+}
+
+.listing_inner.cms-page-wrap .news_block .news_image {
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  display: block;
+}
+
+.listing_inner.cms-page-wrap .news_block .news_image:before {
+  content: "";
+  display: block;
+  padding-bottom: 56.25%;
+}
+
+.listing_inner.cms-page-wrap .news_block .news_image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.listing_inner.cms-page-wrap .news_block .news_title {
+  margin-top: 15px;
+  min-height: auto;
+  padding: 0;
+}
+
+.listing_inner.cms-page-wrap .news_block .news_title a {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #3e4093;
+  font-weight: 600;
+}
+
+.listing_inner.cms-page-wrap .news_block .news_description {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #555;
+}
+
+@media screen and (max-width: 1199px) {
+  .listing_inner.cms-page-wrap .news_list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .listing_inner.cms-page-wrap .news_list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .listing_inner.cms-page-wrap .page_container {
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+}

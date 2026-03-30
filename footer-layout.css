@@ -331,3 +331,10 @@
     max-width: 100% !important;
   }
 }
+
+/* Safe area (notch / home indicator) on phones */
+@media screen and (max-width: 959px) {
+  .footer {
+    padding-bottom: max(20px, env(safe-area-inset-bottom, 0px)) !important;
+  }
+}

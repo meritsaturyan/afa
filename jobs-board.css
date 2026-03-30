@@ -305,6 +305,12 @@
 }
 
 @media screen and (max-width: 600px) {
+  .jobs-board-page {
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
   .jobs-filters {
     grid-template-columns: 1fr;
     padding: 22px 18px;

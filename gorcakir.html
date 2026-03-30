@@ -5370,61 +5370,7 @@
                         </div>
 
                         <!-- Executive Members Grid -->
-                        <div class="executive_grid">
-                            <div class="executive_member_card">
-                                <div class="member_avatar">👔</div>
-                                <h3 class="member_name">Անուն Ազգանուն</h3>
-                                <p class="member_position">Գործադիր Տնօրեն</p>
-                                <p class="member_description">
-                                    Պատասխանատու է Հասարակության օրական գործունեության կազմակերպման և ղեկավարման համար:
-                                </p>
-                            </div>
-
-                            <div class="executive_member_card">
-                                <div class="member_avatar">👔</div>
-                                <h3 class="member_name">Անուն Ազգանուն</h3>
-                                <p class="member_position">Փոխտնօրեն</p>
-                                <p class="member_description">
-                                    Աջակցում է գործադիր տնօրենին և պատասխանատու է կոնկրետ ոլորտների համար:
-                                </p>
-                            </div>
-
-                            <div class="executive_member_card">
-                                <div class="member_avatar">👔</div>
-                                <h3 class="member_name">Անուն Ազգանուն</h3>
-                                <p class="member_position">Ծրագրերի Կոորդինատոր</p>
-                                <p class="member_description">
-                                    Կոորդինացնում է Հասարակության ծրագրերի և նախաձեռնությունների իրականացումը:
-                                </p>
-                            </div>
-
-                            <div class="executive_member_card">
-                                <div class="member_avatar">👔</div>
-                                <h3 class="member_name">Անուն Ազգանուն</h3>
-                                <p class="member_position">Ֆինանսական Տնօրեն</p>
-                                <p class="member_description">
-                                    Պատասխանատու է Հասարակության ֆինանսական կառավարման և հաշվապահական հաշվառման համար:
-                                </p>
-                            </div>
-
-                            <div class="executive_member_card">
-                                <div class="member_avatar">👔</div>
-                                <h3 class="member_name">Անուն Ազգանուն</h3>
-                                <p class="member_position">Կապերի Կոորդինատոր</p>
-                                <p class="member_description">
-                                    Կազմակերպում է Հասարակության արտաքին կապերը և համագործակցությունը:
-                                </p>
-                            </div>
-
-                            <div class="executive_member_card">
-                                <div class="member_avatar">👔</div>
-                                <h3 class="member_name">Անուն Ազգանուն</h3>
-                                <p class="member_position">Իրավաբանական Խորհրդատու</p>
-                                <p class="member_description">
-                                    Ապահովում է իրավական աջակցություն և խորհրդատվություն Հասարակության գործունեության համար:
-                                </p>
-                            </div>
-                        </div>
+                        <div class="executive_grid" data-cms-page="gorcakir"></div>
                     </div>
                 </div>
             </div>
@@ -5999,60 +5945,11 @@
 // injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
 </script>
 
-</body>
 
+<link rel="stylesheet" href="cms-page-feed.css">
+<script>window.CMS_ORIGIN = window.CMS_ORIGIN || "http://localhost:3847";</script>
+<script src="cms-page-posts.js" defer></script>
 
-
-<script>
-  // Language dropdown toggle
-  (function () {
-    var btn = document.getElementById('lang_btn');
-    var dd = document.getElementById('lang_dropdown');
-    if (!btn || !dd) return;
-
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function () {
-      dd.style.display = 'none';
-    });
-  })();
-
-  // Mobile menu toggle (burger)
-  (function () {
-    function initMobileMenu() {
-      var btn = document.querySelector('.header .menu_btn');
-      if (!btn) return;
-      function toggleMenu(e) {
-        if (e && e.type === 'touchend') e.preventDefault();
-        document.body.classList.toggle('menu_opened');
-      }
-      btn.addEventListener('click', toggleMenu);
-      btn.addEventListener('touchend', toggleMenu, { passive: false });
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
-    else initMobileMenu();
-  })();
-  // Search (lupa): open input on click
-  (function () {
-    var block = document.querySelector(".header .search_block");
-    if (!block) return;
-    var btn = block.querySelector("button[type=submit]");
-    var input = block.querySelector("input");
-    if (!btn || !input) return;
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (block.getAttribute("data-type") === "close") {
-        block.classList.add("opened");
-        input.focus();
-      }
-    });
-  })();
-</script>
 </body>
 
 </html>

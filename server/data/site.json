@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "news": [
+    {
+      "id": "n1",
+      "published": true,
+      "sortOrder": 0,
+      "date": "28-02-2026",
+      "link": "norutyunner_korporativ.html",
+      "image": "public/korporativ.jpg",
+      "tag": "ՀՖԱ",
+      "title": {
+        "am": "«Պրոֆեսիոնալ կորպորատիվ իրավաբանական սպասարկում» թեմայով սեմինար-քննարկում",
+        "en": "Seminar on professional corporate legal services",
+        "ru": "Семинар по корпоративному праву"
+      },
+      "excerpt": {
+        "am": "28.02.2026թ.-ին Հայաստանի ֆինանսիստների ասոցիացիայում տեղի ունեցավ հերթական սեմինար-քննարկումը։",
+        "en": "On 28.02.2026 the Association held a seminar-discussion.",
+        "ru": "28.02.2026 состоялся семинар-обсуждение."
+      }
+    },
+    {
+      "id": "n2",
+      "published": true,
+      "sortOrder": 1,
+      "date": "28-02-2026",
+      "link": "norutyunner_scopus.html",
+      "image": "public/Scopus.jpg",
+      "tag": "ՀՖԱ",
+      "title": {
+        "am": "Ասոցիացիայի 2 անդամների գիտական հոդվածներ տպագրվել են Scopus վարկանիշավորվող գրքում",
+        "en": "Members' articles published in a Scopus-indexed book",
+        "ru": "Статьи членов ассоциации в книге Scopus"
+      },
+      "excerpt": {
+        "am": "Ուրախությամբ տեղեկացնում ենք, որ ասոցիացիայի 2 անդամների հոդվածներ տպագրվել են Scopus գրքում։",
+        "en": "We are pleased to announce publications in an international Scopus-indexed book.",
+        "ru": "Рады сообщить о публикациях в книге Scopus."
+      }
+    },
+    {
+      "id": "n3",
+      "published": true,
+      "sortOrder": 2,
+      "date": "31-01-2026",
+      "link": "norutyunner_hamajoxov.html",
+      "image": "public/hamajoxov.jpg",
+      "tag": "ՀՖԱ",
+      "title": {
+        "am": "Հայաստանի ֆինանսիստների ասոցիացիայի Համաժողովը",
+        "en": "Conference of the Association of Accountants of Armenia",
+        "ru": "Конференция Ассоциации финансистов Армении"
+      },
+      "excerpt": {
+        "am": "31.01.2026թ.-ին տեղի ունեցավ Համաժողովը։",
+        "en": "On 31.01.2026 the Conference took place.",
+        "ru": "31.01.2026 состоялась Конференция."
+      }
+    }
+  ],
+  "home": {
+    "heroImages": [
+      "public/background.jpg",
+      "public/hamajoxov.jpg",
+      "public/korporativ.jpg",
+      "public/hamajoxov5.jpg",
+      "public/korporativ1.jpg"
+    ],
+    "hero": {
+      "am": {
+        "text": "Մենք ներկայացնում ենք բիզնես համայնքի շահերը և խթանում բիզնեսի միջավայրի շարունակական բարելավումը:",
+        "ctaText": "Անդամակցել",
+        "ctaHref": "inchuandamakcel.html"
+      },
+      "en": {
+        "text": "We represent the interests of the business community and promote a better business environment.",
+        "ctaText": "Join",
+        "ctaHref": "inchuandamakcel.html"
+      },
+      "ru": {
+        "text": "Мы представляем интересы бизнес-сообщества и способствуем улучшению деловой среды.",
+        "ctaText": "Вступить",
+        "ctaHref": "inchuandamakcel.html"
+      }
+    },
+    "about": {
+      "am": {
+        "title": "ՄԵՐ ՄԱՍԻՆ",
+        "bodyHtml": "<p>Հայաստանի գործատուների հանրապետական միությունը (ՀՖԱ) շահույթ չհետապնդող, ոչ պետական կազմակերպություն է, որը ներկայացնում է գործատուների համընդհանուր շահերը Հայաստանում։</p>",
+        "buttonText": "ՏԵՍՆԵԼ ԱՎԵԼԻՆ",
+        "buttonHref": "mermasin.html"
+      },
+      "en": {
+        "title": "ABOUT US",
+        "bodyHtml": "<p>The Association of Accountants of Armenia is a non-profit organisation representing employers' interests.</p>",
+        "buttonText": "READ MORE",
+        "buttonHref": "mermasin.html"
+      },
+      "ru": {
+        "title": "О НАС",
+        "bodyHtml": "<p>Ассоциация финансистов Армении — некоммерческая организация, представляющая интересы работодателей.</p>",
+        "buttonText": "ПОДРОБНЕЕ",
+        "buttonHref": "mermasin.html"
+      }
+    },
+    "newsSection": {
+      "am": {
+        "title": "ՆՈՐՈՒԹՅՈՒՆՆԵՐ",
+        "viewAllText": "ՏԵՍՆԵԼ ԲՈԼՈՐԸ",
+        "viewAllHref": "norutyunner.html"
+      },
+      "en": {
+        "title": "NEWS",
+        "viewAllText": "VIEW ALL",
+        "viewAllHref": "norutyunner.html"
+      },
+      "ru": {
+        "title": "НОВОСТИ",
+        "viewAllText": "ВСЕ НОВОСТИ",
+        "viewAllHref": "norutyunner.html"
+      }
+    },
+    "membership": {
+      "title": {
+        "am": "ԱՆԴԱՄԱԿՑԵԼՈՒ ԱՌԱՎԵԼՈՒԹՅՈՒՆՆԵՐԸ",
+        "en": "MEMBERSHIP BENEFITS",
+        "ru": "ПРЕИМУЩЕСТВА ЧЛЕНСТВА"
+      },
+      "items": [
+        {
+          "image": "public/advocacy.jpg",
+          "title": {
+            "am": "Շահերի պաշտպանություն",
+            "en": "Advocacy",
+            "ru": "Защита интересов"
+          },
+          "text": {
+            "am": "Անդամների շահերի պաշտպանություն։",
+            "en": "Protection of members' interests.",
+            "ru": "Защита интересов членов."
+          }
+        },
+        {
+          "image": "public/social-dialogue.jpg",
+          "title": {
+            "am": "Սոցիալական գործընկերություն",
+            "en": "Social dialogue",
+            "ru": "Социальный диалог"
+          },
+          "text": {
+            "am": "Օրենսդրական առաջարկներ։",
+            "en": "Legislative proposals.",
+            "ru": "Законодательные предложения."
+          }
+        },
+        {
+          "image": "public/education-labour-market.jpg",
+          "title": {
+            "am": "Կրթություն-բիզնես",
+            "en": "Education–business",
+            "ru": "Образование и бизнес"
+          },
+          "text": {
+            "am": "Համագործակցություն կրթական հաստատությունների հետ։",
+            "en": "Cooperation with education.",
+            "ru": "Сотрудничество с вузами."
+          }
+        },
+        {
+          "image": "public/business-consulting.jpg",
+          "title": {
+            "am": "Բիզնես խորհրդատվություն",
+            "en": "Business consulting",
+            "ru": "Бизнес-консалтинг"
+          },
+          "text": {
+            "am": "Բիզնես պլանավորում և թրեյնինգներ։",
+            "en": "Planning and training.",
+            "ru": "Планирование и обучение."
+          }
+        },
+        {
+          "image": "public/business-coop.jpg",
+          "title": {
+            "am": "Բիզնես համագործակցություն",
+            "en": "Business cooperation",
+            "ru": "Бизнес-сотрудничество"
+          },
+          "text": {
+            "am": "Խթանում տեղական և արտասահմանյան կապերում։",
+            "en": "Local and international links.",
+            "ru": "Местные и международные связи."
+          }
+        },
+        {
+          "image": "public/legal-consulting.jpg",
+          "title": {
+            "am": "Իրավաբանական խորհրդատվություն",
+            "en": "Legal consulting",
+            "ru": "Юридические консультации"
+          },
+          "text": {
+            "am": "Իրազեկում օրենսդրության վերաբերյալ։",
+            "en": "Legal awareness.",
+            "ru": "Правовая информация."
+          }
+        }
+      ]
+    },
+    "stats": {
+      "title": {
+        "am": "ՀՖԱ-Ն ԱՅՍՕՐ",
+        "en": "AFA TODAY",
+        "ru": "АФА СЕГОДНЯ"
+      },
+      "introHtml": {
+        "am": "",
+        "en": "",
+        "ru": ""
+      },
+      "items": [
+        {
+          "value": "1411",
+          "type": {
+            "am": "ԱՆԴԱՄ ԿԱԶՄԱԿԵՐՊՈՒԹՅՈՒՆ",
+            "en": "MEMBER ORGANISATIONS",
+            "ru": "ОРГАНИЗАЦИЙ-ЧЛЕНОВ"
+          },
+          "text": {
+            "am": "ՀՖԱ միավորում է մոտ 1400 անդամ ընկերություններ։",
+            "en": "AFA unites about 1400 member companies.",
+            "ru": "АФА объединяет около 1400 компаний."
+          }
+        },
+        {
+          "value": "18",
+          "type": {
+            "am": "ՏԱՐՎԱ ԳՈՐԾՈՒՆԵՈՒԹՅՈՒՆ",
+            "en": "YEARS OF ACTIVITY",
+            "ru": "ЛЕТ ДЕЯТЕЛЬНОСТИ"
+          },
+          "text": {
+            "am": "2007թ.-ից ՀՖԱ-ն ներկայացնում է գործատուների շահերը։",
+            "en": "Since 2007 AFA represents employers.",
+            "ru": "С 2007 года АФА представляет работодателей."
+          }
+        },
+        {
+          "value": "22",
+          "type": {
+            "am": "ՃՅՈՒՂԱՅԻՆ ՄԻՈՒԹՅՈՒՆՆԵՐ",
+            "en": "SECTOR UNIONS",
+            "ru": "ОТРАСЛЕВЫХ ОБЪЕДИНЕНИЙ"
+          },
+          "text": {
+            "am": "Սերտ համագործակցություն ճյուղային միությունների հետ։",
+            "en": "Close cooperation with sector unions.",
+            "ru": "Тесное сотрудничество с отраслевыми объединениями."
+          }
+        }
+      ]
+    }
+  }
+}

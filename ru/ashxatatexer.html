@@ -5255,6 +5255,12 @@
             </div>
         </div>
 
+        <div class="listing_inner cms-page-wrap">
+            <div class="page_container">
+                <ul class="news_list" data-cms-page="ashxatatexer"></ul>
+            </div>
+        </div>
+
         <div class="inner_content_section">
             <div class="page_container">
                 <div class="jobs-board-page" id="jobs-board-root">
@@ -5826,9 +5832,10 @@
 // injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
 </script>
 
-</body>
 
-
+<link rel="stylesheet" href="../cms-page-feed.css">
+<script>window.CMS_ORIGIN = window.CMS_ORIGIN || "http://localhost:3847";</script>
+<script src="../cms-page-posts.js" defer></script>
 
 <script>
   (function () {
@@ -5871,56 +5878,6 @@
   })();
 </script>
 
-<script>
-  // Language dropdown toggle
-  (function () {
-    var btn = document.getElementById('lang_btn');
-    var dd = document.getElementById('lang_dropdown');
-    if (!btn || !dd) return;
-
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function () {
-      dd.style.display = 'none';
-    });
-  })();
-
-  // Mobile menu toggle (burger)
-  (function () {
-    function initMobileMenu() {
-      var btn = document.querySelector('.header .menu_btn');
-      if (!btn) return;
-      function toggleMenu(e) {
-        if (e && e.type === 'touchend') e.preventDefault();
-        document.body.classList.toggle('menu_opened');
-      }
-      btn.addEventListener('click', toggleMenu);
-      btn.addEventListener('touchend', toggleMenu, { passive: false });
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
-    else initMobileMenu();
-  })();
-  // Search (lupa): open input on click
-  (function () {
-    var block = document.querySelector(".header .search_block");
-    if (!block) return;
-    var btn = block.querySelector("button[type=submit]");
-    var input = block.querySelector("input");
-    if (!btn || !input) return;
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (block.getAttribute("data-type") === "close") {
-        block.classList.add("opened");
-        input.focus();
-      }
-    });
-  })();
-</script>
 <script>window.JOBS_API_BASE = window.JOBS_API_BASE || "";</script>
 <script src="../jobs-board.js" defer></script>
 </body>

@@ -5223,61 +5223,7 @@
                         </div>
 
                         <!-- Council Members Grid -->
-                        <div class="council_grid">
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">First Last Name</h3>
-                                <p class="member_position">Council Chair</p>
-                                <p class="member_description">
-                                    Responsible for the general management of the Association and strategic decision-making.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">First Last Name</h3>
-                                <p class="member_position">Council Member</p>
-                                <p class="member_description">
-                                    Represents the interests of the Association's members and participates in important decision-making.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">First Last Name</h3>
-                                <p class="member_position">Council Member</p>
-                                <p class="member_description">
-                                    Represents the interests of the Association's members and participates in important decision-making.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">First Last Name</h3>
-                                <p class="member_position">Council Member</p>
-                                <p class="member_description">
-                                    Represents the interests of the Association's members and participates in important decision-making.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">First Last Name</h3>
-                                <p class="member_position">Council Member</p>
-                                <p class="member_description">
-                                    Represents the interests of the Association's members and participates in important decision-making.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">First Last Name</h3>
-                                <p class="member_position">Council Member</p>
-                                <p class="member_description">
-                                    Represents the interests of the Association's members and participates in important decision-making.
-                                </p>
-                            </div>
-                        </div>
+                        <div class="council_grid" data-cms-page="khorhurd"></div>
                     </div>
                 </div>
             </div>
@@ -5810,9 +5756,10 @@
 // injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
 </script>
 
-</body>
 
-
+<link rel="stylesheet" href="../cms-page-feed.css">
+<script>window.CMS_ORIGIN = window.CMS_ORIGIN || "http://localhost:3847";</script>
+<script src="../cms-page-posts.js" defer></script>
 
 <script>
   (function () {
@@ -5855,50 +5802,6 @@
   })();
 </script>
 
-<script>
-  // Language dropdown toggle
-  (function () {
-    var btn = document.getElementById('lang_btn');
-    var dd = document.getElementById('lang_dropdown');
-    if (!btn || !dd) return;
-
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function () {
-      dd.style.display = 'none';
-    });
-  })();
-
-  // Mobile menu toggle (burger)
-  (function () {
-    var btn = document.querySelector('.header .menu_btn');
-    if (!btn) return;
-
-    btn.addEventListener('click', function () {
-      document.body.classList.toggle('menu_opened');
-    });
-  })();
-  // Search (lupa): open input on click
-  (function () {
-    var block = document.querySelector(".header .search_block");
-    if (!block) return;
-    var btn = block.querySelector("button[type=submit]");
-    var input = block.querySelector("input");
-    if (!btn || !input) return;
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (block.getAttribute("data-type") === "close") {
-        block.classList.add("opened");
-        input.focus();
-      }
-    });
-  })();
-</script>
 </body>
 
 </html>

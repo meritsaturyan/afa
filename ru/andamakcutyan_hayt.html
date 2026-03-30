@@ -5875,10 +5875,6 @@
 // injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
 </script>
 
-</body>
-
-
-
 <script>
   (function () {
     const path = (location.pathname || "").toLowerCase();
@@ -5920,56 +5916,6 @@
   })();
 </script>
 
-<script>
-  // Language dropdown toggle
-  (function () {
-    var btn = document.getElementById('lang_btn');
-    var dd = document.getElementById('lang_dropdown');
-    if (!btn || !dd) return;
-
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function () {
-      dd.style.display = 'none';
-    });
-  })();
-
-  // Mobile menu toggle (burger)
-  (function () {
-    function initMobileMenu() {
-      var btn = document.querySelector('.header .menu_btn');
-      if (!btn) return;
-      function toggleMenu(e) {
-        if (e && e.type === 'touchend') e.preventDefault();
-        document.body.classList.toggle('menu_opened');
-      }
-      btn.addEventListener('click', toggleMenu);
-      btn.addEventListener('touchend', toggleMenu, { passive: false });
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
-    else initMobileMenu();
-  })();
-  // Search (lupa): open input on click
-  (function () {
-    var block = document.querySelector(".header .search_block");
-    if (!block) return;
-    var btn = block.querySelector("button[type=submit]");
-    var input = block.querySelector("input");
-    if (!btn || !input) return;
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (block.getAttribute("data-type") === "close") {
-        block.classList.add("opened");
-        input.focus();
-      }
-    });
-  })();
-</script>
 </body>
 
 </html>

@@ -5223,61 +5223,7 @@
                         </div>
 
                         <!-- Council Members Grid -->
-                        <div class="council_grid">
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">Имя Фамилия</h3>
-                                <p class="member_position">Председатель совета</p>
-                                <p class="member_description">
-                                    Ответственен за общее руководство Ассоциацией и принятие стратегических решений.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">Имя Фамилия</h3>
-                                <p class="member_position">Член совета</p>
-                                <p class="member_description">
-                                    Представляет интересы членов Ассоциации и участвует в принятии важных решений.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">Имя Фамилия</h3>
-                                <p class="member_position">Член совета</p>
-                                <p class="member_description">
-                                    Представляет интересы членов Ассоциации и участвует в принятии важных решений.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">Имя Фамилия</h3>
-                                <p class="member_position">Член совета</p>
-                                <p class="member_description">
-                                    Представляет интересы членов Ассоциации и участвует в принятии важных решений.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">Имя Фамилия</h3>
-                                <p class="member_position">Член совета</p>
-                                <p class="member_description">
-                                    Представляет интересы членов Ассоциации и участвует в принятии важных решений.
-                                </p>
-                            </div>
-
-                            <div class="council_member_card">
-                                <div class="member_avatar">👤</div>
-                                <h3 class="member_name">Имя Фамилия</h3>
-                                <p class="member_position">Член совета</p>
-                                <p class="member_description">
-                                    Представляет интересы членов Ассоциации и участвует в принятии важных решений.
-                                </p>
-                            </div>
-                        </div>
+                        <div class="council_grid" data-cms-page="khorhurd"></div>
                     </div>
                 </div>
             </div>
@@ -5810,10 +5756,11 @@
 // injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
 </script>
 
-</body>
 
+<link rel="stylesheet" href="../cms-page-feed.css">
+<script>window.CMS_ORIGIN = window.CMS_ORIGIN || "http://localhost:3847";</script>
+<script src="../cms-page-posts.js" defer></script>
 
-    
 <script>
   (function () {
     const path = (location.pathname || "").toLowerCase();
@@ -5855,56 +5802,6 @@
   })();
 </script>
 
-<script>
-  // Language dropdown toggle
-  (function () {
-    var btn = document.getElementById('lang_btn');
-    var dd = document.getElementById('lang_dropdown');
-    if (!btn || !dd) return;
-
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      dd.style.display = (dd.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function () {
-      dd.style.display = 'none';
-    });
-  })();
-
-  // Mobile menu toggle (burger)
-  (function () {
-    function initMobileMenu() {
-      var btn = document.querySelector('.header .menu_btn');
-      if (!btn) return;
-      function toggleMenu(e) {
-        if (e && e.type === 'touchend') e.preventDefault();
-        document.body.classList.toggle('menu_opened');
-      }
-      btn.addEventListener('click', toggleMenu);
-      btn.addEventListener('touchend', toggleMenu, { passive: false });
-    }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu);
-    else initMobileMenu();
-  })();
-  // Search (lupa): open input on click
-  (function () {
-    var block = document.querySelector(".header .search_block");
-    if (!block) return;
-    var btn = block.querySelector("button[type=submit]");
-    var input = block.querySelector("input");
-    if (!btn || !input) return;
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (block.getAttribute("data-type") === "close") {
-        block.classList.add("opened");
-        input.focus();
-      }
-    });
-  })();
-</script>
 </body>
 
 </html>
