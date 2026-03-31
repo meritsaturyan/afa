@@ -1,7 +1,48 @@
 (function () {
   "use strict";
 
-  var API = "";
+  /** CMS API base (no trailing slash). Դատարկ = նույն origin (օր. http://localhost:3847/admin/) */
+  function resolveApiBase() {
+    if (typeof window.CMS_ADMIN_API === "string" && window.CMS_ADMIN_API.length) {
+      return window.CMS_ADMIN_API.replace(/\/$/, "");
+    }
+    if (location.protocol === "file:") {
+      return "http://localhost:3847";
+    }
+    var p = location.port;
+    var h = location.hostname;
+    if (
+      h === "localhost" ||
+      h === "127.0.0.1"
+    ) {
+      if (p === "5500" || p === "5501" || p === "8080" || p === "3000" || p === "5173" || p === "4173") {
+        return "http://localhost:3847";
+      }
+    }
+    return "";
+  }
+
+  var API = resolveApiBase();
+
+  function parseApiJson(r) {
+    return r.text().then(function (text) {
+      var data;
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (e) {
+        throw new Error(
+          "Սերվերը JSON չի վերադարձրել (ստուգեք CMS՝ " +
+            (API || location.origin) +
+            ")։ Հաճախ ադմինը պետք է բացել CMS-ի հասցեից, ոչ թե Live Server-ից։"
+        );
+      }
+      if (!r.ok) {
+        var msg = (data && data.error) || r.statusText || String(r.status);
+        throw new Error(msg);
+      }
+      return data;
+    });
+  }
 
   function $(id) {
     return document.getElementById(id);
@@ -38,6 +79,111 @@
     council: "Դասավորություն՝ խորհրդի քարտեր (լուսանկար, անուն, պաշտոն, տեքստ)",
     executive: "Դասավորություն՝ գործադիր մարմնի քարտեր",
   };
+
+  var FORM_TYPE_LABEL = {
+    membership_org: "Անդամակցություն · կազմակերպություն",
+    membership_individual: "Անդամակցություն · ֆիզ. անձ",
+    contact: "Հետադարձ կապ",
+  };
+
+  function escapeHtml(t) {
+    var d = document.createElement("div");
+    d.textContent = t == null ? "" : String(t);
+    return d.innerHTML;
+  }
+
+  /** Դիմումները ներգրավվում են /api/admin/site-ի մեջ (նույն հարցումը, ինչ գլխավորի համար) */
+  function loadFormSubmissions() {
+    return api("/api/admin/site")
+      .then(parseApiJson)
+      .then(function (data) {
+        var subs = data && data.formSubmissions;
+        return { submissions: Array.isArray(subs) ? subs : [] };
+      });
+  }
+
+  function renderFormSubmissions(payload) {
+    var el = $("forms-list");
+    if (!el) return;
+    var items = (payload && payload.submissions) || [];
+    el.innerHTML = "";
+    if (!items.length) {
+      el.innerHTML = '<p class="upload-list">Դիմումներ դեռ չկան։</p>';
+      return;
+    }
+    items.forEach(function (s) {
+      var card = document.createElement("div");
+      card.className = "card form-entry" + (s.read ? " form-entry--read" : "");
+      var head = document.createElement("div");
+      head.className = "row form-entry-head";
+      head.style.cssText = "justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;";
+      var left = document.createElement("div");
+      var typeLab = FORM_TYPE_LABEL[s.type] || s.type;
+      left.innerHTML =
+        "<strong>" +
+        escapeHtml(typeLab) +
+        "</strong> · " +
+        escapeHtml(s.lang || "") +
+        " · <code>" +
+        escapeHtml((s.createdAt || "").slice(0, 19).replace("T", " ")) +
+        "</code>" +
+        (s.page ? " · " + escapeHtml(s.page) : "");
+      var actions = document.createElement("div");
+      actions.className = "row";
+      actions.style.gap = "8px";
+      var btnRead = document.createElement("button");
+      btnRead.type = "button";
+      btnRead.className = "secondary";
+      btnRead.textContent = s.read ? "Չկարդացված" : "Կարդացված";
+      btnRead.addEventListener("click", function () {
+        api("/api/admin/form-submissions/" + encodeURIComponent(s.id), {
+          method: "PATCH",
+          body: JSON.stringify({ read: !s.read }),
+        })
+          .then(function () {
+            return loadFormSubmissions();
+          })
+          .then(renderFormSubmissions)
+          .catch(function () {
+            alert("Սխալ");
+          });
+      });
+      var btnDel = document.createElement("button");
+      btnDel.type = "button";
+      btnDel.className = "danger";
+      btnDel.textContent = "Ջնջել";
+      btnDel.addEventListener("click", function () {
+        if (!confirm("Ջնջե՞լ այս գրառումը։")) return;
+        api("/api/admin/form-submissions/" + encodeURIComponent(s.id), { method: "DELETE" })
+          .then(function () {
+            return loadFormSubmissions();
+          })
+          .then(renderFormSubmissions)
+          .catch(function () {
+            alert("Սխալ");
+          });
+      });
+      actions.appendChild(btnRead);
+      actions.appendChild(btnDel);
+      head.appendChild(left);
+      head.appendChild(actions);
+      card.appendChild(head);
+
+      var dl = document.createElement("dl");
+      dl.className = "form-fields-dl";
+      var f = s.fields || {};
+      Object.keys(f).forEach(function (k) {
+        var dt = document.createElement("dt");
+        dt.textContent = k;
+        var dd = document.createElement("dd");
+        dd.textContent = f[k];
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      });
+      card.appendChild(dl);
+      el.appendChild(card);
+    });
+  }
 
   function api(path, opts) {
     opts = opts || {};
@@ -561,13 +707,34 @@
         b.classList.remove("active");
       });
       btn.classList.add("active");
-      ["home", "news", "pages", "media", "json"].forEach(function (t) {
+      ["home", "news", "pages", "forms", "media", "json"].forEach(function (t) {
         $("tab-" + t).classList.toggle("hidden", btn.getAttribute("data-tab") !== t);
       });
       if (btn.getAttribute("data-tab") === "pages") {
         renderPagePostsEditor();
       }
+      if (btn.getAttribute("data-tab") === "forms") {
+        loadFormSubmissions()
+          .then(renderFormSubmissions)
+          .catch(function (err) {
+            var m = err && err.message ? String(err.message) : "";
+            alert(
+              "Դիմումների բեռնման սխալ" +
+                (m ? "\n\n" + m : "") +
+                "\n\nՀուշում՝ բացեք ադմինը CMS սերվերից՝ օր. http://localhost:3847/admin/ (կամ index.html-ում նշեք window.CMS_ADMIN_API):"
+            );
+          });
+      }
     });
+  });
+
+  $("btn-reload-forms").addEventListener("click", function () {
+    loadFormSubmissions()
+      .then(renderFormSubmissions)
+      .catch(function (err) {
+        var m = err && err.message ? String(err.message) : "";
+        alert("Դիմումների բեռնման սխալ" + (m ? "\n\n" + m : ""));
+      });
   });
 
   api("/api/admin/me")

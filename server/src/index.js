@@ -10,6 +10,14 @@ const bcrypt = require("bcryptjs");
 const { v4: uuidv4 } = require("uuid");
 
 const { readSite, writeSite, defaultSite, PAGE_SLUGS, mergePagePostsFromAdmin } = require("./store");
+const {
+  FORM_TYPES,
+  sanitizeFields,
+  appendSubmission,
+  listSubmissions,
+  deleteSubmission,
+  setRead,
+} = require("./formStore");
 
 const PORT = Number(process.env.CMS_PORT || 3847);
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "changeme";
@@ -107,7 +115,15 @@ app.get("/api/admin/me", (req, res) => {
 });
 
 app.get("/api/admin/site", requireAuth, (_req, res) => {
-  res.json(readSite());
+  const site = readSite();
+  let formSubmissions = [];
+  try {
+    const list = listSubmissions();
+    formSubmissions = Array.isArray(list) ? list : [];
+  } catch (e) {
+    console.error("[formSubmissions] list", e);
+  }
+  res.json(Object.assign({}, site, { formSubmissions }));
 });
 
 app.put("/api/admin/site", requireAuth, (req, res) => {
@@ -122,7 +138,14 @@ app.put("/api/admin/site", requireAuth, (req, res) => {
       pagePosts: mergePagePostsFromAdmin(cur, incoming.pagePosts),
     };
     writeSite(next);
-    res.json(next);
+    let formSubmissions = [];
+    try {
+      const list = listSubmissions();
+      formSubmissions = Array.isArray(list) ? list : [];
+    } catch (e) {
+      console.error("[formSubmissions] list after save", e);
+    }
+    res.json(Object.assign({}, next, { formSubmissions }));
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: "Save failed" });
@@ -166,6 +189,57 @@ function pickLang(obj, lang) {
   return "";
 }
 
+app.post("/api/public/forms", (req, res) => {
+  try {
+    const body = req.body || {};
+    const type = String(body.type || "")
+      .toLowerCase()
+      .trim();
+    if (!FORM_TYPES.has(type)) {
+      return res.status(400).json({ error: "Invalid form type" });
+    }
+    const lang = String(body.lang || "am")
+      .toLowerCase()
+      .slice(0, 2);
+    const page = String(body.page || req.get("referer") || "").slice(0, 300);
+    const fields = sanitizeFields(body.fields);
+    const ip = req.ip || req.connection?.remoteAddress || "";
+    const entry = appendSubmission({ type, lang, page, fields, ip });
+    res.json({ ok: true, id: entry.id });
+  } catch (e) {
+    if (e && e.code === "VALIDATION") {
+      return res.status(400).json({ error: e.message || "Validation failed" });
+    }
+    console.error(e);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.get("/api/admin/form-submissions", requireAuth, (_req, res) => {
+  try {
+    const submissions = listSubmissions();
+    res.json({ submissions: Array.isArray(submissions) ? submissions : [] });
+  } catch (e) {
+    console.error("[form-submissions]", e);
+    res.status(500).json({ error: "Failed to read form submissions" });
+  }
+});
+
+app.delete("/api/admin/form-submissions/:id", requireAuth, (req, res) => {
+  const ok = deleteSubmission(String(req.params.id || ""));
+  if (!ok) return res.status(404).json({ error: "Not found" });
+  res.json({ ok: true });
+});
+
+app.patch("/api/admin/form-submissions/:id", requireAuth, (req, res) => {
+  const id = String(req.params.id || "");
+  const read = req.body && Object.prototype.hasOwnProperty.call(req.body, "read") ? !!req.body.read : null;
+  if (read === null) return res.status(400).json({ error: "read boolean required" });
+  const ok = setRead(id, read);
+  if (!ok) return res.status(404).json({ error: "Not found" });
+  res.json({ ok: true });
+});
+
 app.get("/api/public/page/:slug", (req, res) => {
   const slug = String(req.params.slug || "")
     .toLowerCase()
@@ -206,6 +280,11 @@ app.get("/cms-page-posts.js", (_req, res) => {
 app.get("/cms-page-feed.css", (_req, res) => {
   const p = path.join(__dirname, "..", "..", "cms-page-feed.css");
   res.type("text/css").sendFile(p);
+});
+
+app.get("/site-forms.js", (_req, res) => {
+  const p = path.join(__dirname, "..", "..", "site-forms.js");
+  res.type("js").sendFile(p);
 });
 
 app.get("/", (_req, res) => {

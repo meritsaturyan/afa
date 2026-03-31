@@ -27,6 +27,7 @@
       <button type="button" class="tab active" data-tab="home">Գլխավոր (hero, մեր մասին, բլոկներ)</button>
       <button type="button" class="tab" data-tab="news">Նորություններ</button>
       <button type="button" class="tab" data-tab="pages">Էջեր (բաժիններ)</button>
+      <button type="button" class="tab" data-tab="forms">Դիմումներ (հայտեր)</button>
       <button type="button" class="tab" data-tab="media">Մեդիա</button>
       <button type="button" class="tab" data-tab="json">JSON (ամբողջը)</button>
     </nav>
@@ -150,7 +151,7 @@
 
     <div id="tab-pages" class="panel hidden">
       <h2>Բաժինների գրառումներ (նկար + տեքստեր am/en/ru)</h2>
-      <p class="upload-list">Էջեր՝ Գործունեություն, Խորհուրդ, Գործադիր, Հանձնաժողովներ, Աշխատատեղեր, Անդամներ, Միջոցառումներ, Հարցազրույցներ, Հայտարարություններ։ Խորհրդի և գործադիրի համար լրացրեք «Պաշտոն» և «Տեքստ» դաշտերը։ Ցանցի համար՝ կարճ անոնս՝ ըստ ցանկության։</p>
+      <p class="upload-list">Էջեր՝ Գործունեություն, Խորհուրդ, Գործադիր, Հանձնաժողովներ, Աշխատատեղեր, Անդամներ, Միջոցառումներ, Հարցազրույցներ, Հայտարարություններ։</p>
       <div class="row" style="align-items:center;flex-wrap:wrap;gap:12px">
         <label for="page-slug-select">Բաժին</label>
         <select id="page-slug-select"></select>
@@ -162,6 +163,14 @@
         <span id="save-msg-pages" class="upload-list"></span>
       </div>
       <div id="pages-editor"></div>
+    </div>
+
+    <div id="tab-forms" class="panel hidden">
+      <h2>Կայքից եկող դիմումներ</h2>
+      <div class="row" style="margin-bottom:16px">
+        <button type="button" id="btn-reload-forms">Թարմացնել ցանկը</button>
+      </div>
+      <div id="forms-list"></div>
     </div>
 
     <div id="tab-media" class="panel hidden">
@@ -185,6 +194,8 @@
     </div>
   </div>
 
+  <!-- Եթե ադմինը Live Server-ով է (օր. :5500), API-ն ինքն կկապվի :3847-ին։ Պրոդում նույն դոմենով proxy-ի դեպքում CMS_ADMIN_API չպետք է լինի: -->
+  <script>window.CMS_ADMIN_API = window.CMS_ADMIN_API || "";</script>
   <script src="admin.js"></script>
 </body>
 </html>

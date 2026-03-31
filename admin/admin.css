@@ -228,3 +228,29 @@ button:disabled {
 .hidden {
   display: none !important;
 }
+
+.form-entry {
+  margin-bottom: 16px;
+}
+
+.form-entry--read {
+  opacity: 0.72;
+}
+
+.form-fields-dl {
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.form-fields-dl dt {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.form-fields-dl dd {
+  margin: 2px 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

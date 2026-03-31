@@ -1,3 +1,4 @@
 node_modules/
 uploads/
 data/password.hash
+data/form-submissions.json

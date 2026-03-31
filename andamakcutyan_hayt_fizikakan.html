@@ -5930,69 +5930,6 @@
 
 <script>
 (function () {
-    var form = document.getElementById('individual_membership_form');
-    if (form) {
-        var successEl = document.getElementById('membership_success');
-        var purpose = document.getElementById('purpose');
-        var purposeCount = document.getElementById('purpose_count');
-        function showErr(id, msg) {
-            var el = document.getElementById(id);
-            if (!el) return;
-            el.textContent = msg || '';
-            el.hidden = !msg;
-        }
-        function clearErrs() {
-            ['err_first_name','err_last_name','err_phone','err_email','err_profession','err_purpose'].forEach(function (id) { showErr(id, ''); });
-        }
-        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        function updatePurposeCount() {
-            if (purpose && purposeCount) {
-                var n = purpose.value.length;
-                purposeCount.textContent = '(մնացել է ' + (200 - n) + ' նիշ)';
-            }
-        }
-        if (purpose) {
-            purpose.addEventListener('input', updatePurposeCount);
-            updatePurposeCount();
-        }
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            clearErrs();
-            var ok = true;
-            var fn = (document.getElementById('first_name').value || '').trim();
-            var ln = (document.getElementById('last_name').value || '').trim();
-            var ph = (document.getElementById('phone').value || '').trim();
-            var em = (document.getElementById('email').value || '').trim();
-            var pr = (document.getElementById('profession').value || '').trim();
-            var pu = (document.getElementById('purpose').value || '').trim();
-            if (!fn) { showErr('err_first_name', 'Լրացրեք անունը'); ok = false; }
-            if (!ln) { showErr('err_last_name', 'Լրացրեք ազգանունը'); ok = false; }
-            if (!ph) { showErr('err_phone', 'Լրացրեք հեռախոսահամարը'); ok = false; }
-            else if (ph.indexOf('+374') !== 0) { showErr('err_phone', 'Հեռախոսը պետք է սկսվի +374'); ok = false; }
-            if (!em) { showErr('err_email', 'Լրացրեք էլ․ փոստը'); ok = false; }
-            else if (!emailRe.test(em)) { showErr('err_email', 'Ստուգեք էլ․ փոստի ձևաչափը'); ok = false; }
-            if (!pr) { showErr('err_profession', 'Լրացրեք մասնագիտությունը'); ok = false; }
-            if (!pu) { showErr('err_purpose', 'Լրացրեք նպատակը'); ok = false; }
-            else if (pu.length > 200) { showErr('err_purpose', 'Նիշերը չպետք է գերազանցեն 200-ը'); ok = false; }
-            if (!ok) return;
-            var wp = (document.getElementById('workplace').value || '').trim();
-            var pos = (document.getElementById('position').value || '').trim();
-            var body = 'Անուն: ' + fn + '\nԱզգանուն: ' + ln + '\nՀեռախոս: ' + ph + '\nԷլ. փոստ: ' + em + '\nՄասնագիտություն: ' + pr + '\nԱշխատանքի վայր: ' + (wp || '—') + '\nՊաշտոն: ' + (pos || '—') + '\nՆպատակ:\n' + pu;
-            var subj = encodeURIComponent('ՀՖԱ անդամակցության հայտ (ֆիզիկական անձ)');
-            try {
-                window.location.href = 'mailto:armfinass@gmail.com?subject=' + subj + '&body=' + encodeURIComponent(body);
-            } catch (x) {}
-            form.style.display = 'none';
-            if (successEl) {
-                successEl.hidden = false;
-                successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        });
-    }
-})();
-</script>
-<script>
-(function () {
     var pathname = window.location.pathname || '/';
     var pathSegs = pathname.split('/').filter(Boolean);
     var BASE = (pathSegs[0] === 'afa') ? '/afa' : '';
@@ -6071,6 +6008,8 @@
 <script>
 // injectSecondMenuItems больше не нужен: пункты добавлены статически как .mobile_only
 </script>
+<script>window.CMS_ORIGIN = window.CMS_ORIGIN || "http://localhost:3847";</script>
+<script defer src="site-forms.js"></script>
 
 </body>
 
